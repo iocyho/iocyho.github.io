@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>设计模式 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="单例模式 构造器器私有 提供静态私有属性（创建出来的对象长期驻留内存） 饿汉式 类加载时立即初始化属性 直观的(没有线程安全问题，调用效率高，但是暂用资源) 枚举(枚举元素天然单例，避免反射和反序列化的漏洞，调用效率高，但是不支持延时加载) 不需要延时加载时优先选择   懒汉式 类加载时不会立即初始化属性，到调用时再加载 直观的(延时加载，资源占用少，但是需要解决线程安全问题，调用效率低) 静态内">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://yoursite.com/2019/04/07/blog5_设计模式/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="单例模式 构造器器私有 提供静态私有属性（创建出来的对象长期驻留内存） 饿汉式 类加载时立即初始化属性 直观的(没有线程安全问题，调用效率高，但是暂用资源) 枚举(枚举元素天然单例，避免反射和反序列化的漏洞，调用效率高，但是不支持延时加载) 不需要延时加载时优先选择   懒汉式 类加载时不会立即初始化属性，到调用时再加载 直观的(延时加载，资源占用少，但是需要解决线程安全问题，调用效率低) 静态内">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-07T13:19:02.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式">
+<meta name="twitter:description" content="单例模式 构造器器私有 提供静态私有属性（创建出来的对象长期驻留内存） 饿汉式 类加载时立即初始化属性 直观的(没有线程安全问题，调用效率高，但是暂用资源) 枚举(枚举元素天然单例，避免反射和反序列化的漏洞，调用效率高，但是不支持延时加载) 不需要延时加载时优先选择   懒汉式 类加载时不会立即初始化属性，到调用时再加载 直观的(延时加载，资源占用少，但是需要解决线程安全问题，调用效率低) 静态内">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-blog5_设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/07/blog5_设计模式/" class="article-date">
+  <time datetime="2019-04-07T13:08:38.496Z" itemprop="datePublished">2019-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><ul>
+<li>构造器器私有</li>
+<li>提供静态私有属性（创建出来的对象长期驻留内存）</li>
+<li>饿汉式<ul>
+<li>类加载时立即初始化属性</li>
+<li>直观的(没有线程安全问题，调用效率高，但是暂用资源)</li>
+<li>枚举(枚举元素天然单例，避免反射和反序列化的漏洞，调用效率高，但是不支持延时加载) 不需要延时加载时优先选择</li>
+</ul>
+</li>
+<li>懒汉式<ul>
+<li>类加载时不会立即初始化属性，到调用时再加载</li>
+<li>直观的(延时加载，资源占用少，但是需要解决线程安全问题，调用效率低)</li>
+<li>静态内部类(兼具延时加载、线程安全和调用效率高的有点) 需要延时加载时优先选择</li>
+</ul>
+</li>
+<li>反射破解单例模式(不包括枚举实现的)<ul>
+<li>通过反射获取的对象是新的对象(不再单例)</li>
+<li>解决方法：再构造函数中加判断条件，当instance不为空时直接抛异常</li>
+</ul>
+</li>
+<li>反序列化破解单例模式<ul>
+<li>序列化再反序列化获取的对象是新对象(不在单例)</li>
+<li>解决方法：类中定义readResolve()方法，反序列化时直接调用，将现有的instance返回</li>
+</ul>
+</li>
+<li>多线程测试单例模式<ul>
+<li>CountDownLatch：同步辅助类，完成一组正在其他线程中的操作之前，允许其他线程一直等待<ul>
+<li>countDown() 当前线程调用此方法，则计数减1(建议在finally中执行)</li>
+<li>await() 调用此方法会一直阻塞当前线程，直到计数为0</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><ul>
+<li>实现类与代理类实现共同的抽象接口</li>
+<li>核心作用：通过代理,控制对对象的访问(在不改变类(对象)本身的情况下对方法进行增强)</li>
+<li>核心角色：<ul>
+<li>抽象角色<ul>
+<li>抽象接口</li>
+</ul>
+</li>
+<li>真实角色<ul>
+<li>实现接口，提供实际服务</li>
+</ul>
+</li>
+<li>代理角色<ul>
+<li>服务调用方的代理实现类，实现抽象接口，但是通过真实角色来完成核心业务，并且可以附加自己的操作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>应用场景<ul>
+<li>安全代理 屏蔽对真实角色的直接访问</li>
+<li>远程代理 通过代理类进行远程方法调用 RMI/RPC</li>
+<li>延迟加载 先加载轻量级的代理对象，再加载重量级的实际对象</li>
+</ul>
+</li>
+<li>静态代理：静态定义代理类</li>
+<li>动态代理：动态生成代理类<ul>
+<li>实现方法<ul>
+<li>JDK自带的动态代理<ul>
+<li>java.lang.reflect.Proxy<ul>
+<li>动态生成代理类和对象</li>
+</ul>
+</li>
+<li>java.lang.reflect.InvocationHandler(处理器接口)<ul>
+<li>可以通过invoke方法实现对真实角色的代理访问</li>
+<li>每次通过Proxy生成代理类对象时都要指定对应的处理器对象 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>javaassist字节码操作实现</li>
+<li>CGLIB</li>
+<li>ASM(底层指令，不易维护)</li>
+</ul>
+</li>
+<li>优点：抽象接口中声明的所有方法都被转移到调用处理器的一个集中方法处理，可以更加灵活统一地处理众多方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="施工中…"><a href="#施工中…" class="headerlink" title="施工中…"></a><em>施工中…</em></h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/07/blog5_设计模式/" data-id="cju6ygylh0003w8ss9bpi9jc8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/07/blog4_xml笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">xml笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/07/blog5_设计模式/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/07/blog4_xml笔记/">xml笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/blog3_webservice笔记/">Web services笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/blog2_使用Hexo搭建个人博客/">通过Hexo搭建个人博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/blog1_开端/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
