@@ -1,5 +1,5 @@
 ---
-title：java打包
+title: java打包
 ---
 
 ### 普通javaSE工程打可执行jar包
