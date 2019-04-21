@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/4 | 大西洲总督的的博客</title>
+  <title>RPC框架 | 大西洲总督的的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="活在梦里的初级码农">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大西洲总督的的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/04/index.html">
+  <meta name="description" content="RPC要解决的两个问题 解决分布式系统中，服务之间的调用问题 远程调用时，要能像本地调用一样方便，让调用者感知不到远程调用的逻辑  实现一个RPC框架需要具备的要素 暴露服务 dubbo的服务暴露方式时共享接口   远程代理对象，远程服务器的本地代理 使用代理模式，结合spring使用。通过spring注入接口对象，注入时，如果扫描到对象加了@Reference注解，就给接口生成一个代理对象，将这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RPC框架">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/blog7_RPC框架原理/index.html">
 <meta property="og:site_name" content="大西洲总督的的博客">
-<meta property="og:description" content="活在梦里的初级码农">
+<meta property="og:description" content="RPC要解决的两个问题 解决分布式系统中，服务之间的调用问题 远程调用时，要能像本地调用一样方便，让调用者感知不到远程调用的逻辑  实现一个RPC框架需要具备的要素 暴露服务 dubbo的服务暴露方式时共享接口   远程代理对象，远程服务器的本地代理 使用代理模式，结合spring使用。通过spring注入接口对象，注入时，如果扫描到对象加了@Reference注解，就给接口生成一个代理对象，将这">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-21T15:32:36.408Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大西洲总督的的博客">
-<meta name="twitter:description" content="活在梦里的初级码农">
+<meta name="twitter:title" content="RPC框架">
+<meta name="twitter:description" content="RPC要解决的两个问题 解决分布式系统中，服务之间的调用问题 远程调用时，要能像本地调用一样方便，让调用者感知不到远程调用的逻辑  实现一个RPC框架需要具备的要素 暴露服务 dubbo的服务暴露方式时共享接口   远程代理对象，远程服务器的本地代理 使用代理模式，结合spring使用。通过spring注入接口对象，注入时，如果扫描到对象加了@Reference注解，就给接口生成一个代理对象，将这">
   
     <link rel="alternative" href="/atom.xml" title="大西洲总督的的博客" type="application/atom+xml">
   
@@ -157,130 +158,241 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-blog7_RPC框架原理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      RPC框架
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/21/blog7_RPC框架原理/" class="archive-article-date">
+
+        
+        <a href="/2019/04/21/blog7_RPC框架原理/" class="archive-article-date">
   	<time datetime="2019-04-21T14:55:47.738Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/21/blog7_RPC框架原理/">RPC框架</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="RPC要解决的两个问题"><a href="#RPC要解决的两个问题" class="headerlink" title="RPC要解决的两个问题"></a>RPC要解决的两个问题</h3><ul>
+<li>解决分布式系统中，服务之间的调用问题</li>
+<li>远程调用时，要能像本地调用一样方便，让调用者感知不到远程调用的逻辑</li>
+</ul>
+<h3 id="实现一个RPC框架需要具备的要素"><a href="#实现一个RPC框架需要具备的要素" class="headerlink" title="实现一个RPC框架需要具备的要素"></a>实现一个RPC框架需要具备的要素</h3><ol>
+<li>暴露服务<ul>
+<li>dubbo的服务暴露方式时共享接口</li>
+</ul>
+</li>
+<li>远程代理对象，远程服务器的本地代理<ul>
+<li>使用代理模式，结合spring使用。通过spring注入接口对象，注入时，如果扫描到对象加了@Reference注解，就给接口生成一个代理对象，将这个代理对象放入容器中。代理对象内部，通过通信协议来实现远程过程调用(dubbo使用的是基于Http协议的HttpClient)。</li>
+<li>通过代理，以反射的方式进行调用<ul>
+<li>客户端<ul>
+<li>客户端代理对象调用通讯工具提供的方法，与服务端建立通讯</li>
+<li>客户端代理对象将信息(要调用的服务名称、要调用的接口名称、要调用的方法名称、请求的参数值等等)放入Request对象中</li>
+<li>客户端对象将Request对象序列化为二进制字节码</li>
+<li>客户端调用通讯工具类与服务端建立连接将二进制数据发给服务端</li>
+<li>客户端通讯工具类接收到服务端的响应后，将响应结果进行反序列化，交给代理对象，代理对象将结果返回给调用远程接口的应用</li>
+</ul>
+</li>
+<li>服务端<ul>
+<li>服务使用通讯工具监听端口，接收客户端发来的二进制数据</li>
+<li>服务通讯工具类端通过反序列化将二进制字节码转为Request对象，并将Request对象交给服务端的代理对象进行处理</li>
+<li>服务端代理对象从Request对象中获取信息(接口名称、方法名称、参数等)</li>
+<li>服务端代理对象根据得到的消息，通过反射的方式去调用对应的方法，得到返回值，交给通讯工具类</li>
+<li>服务端通讯工具类将返回结果序列化为二进制数据，发送给客户端。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>通信<ul>
+<li>传出协议</li>
+<li>数据协议</li>
+</ul>
+</li>
+<li>序列化，反序列化<ul>
+<li>序列化之后的字节大小和序列化过程的耗时会对性能产生一定的影响</li>
+<li>序列化技术：json、xml、hessain、Kryo、Avro</li>
+</ul>
+</li>
+<li>IO方式</li>
+</ol>
+<h3 id="优秀的远程框架还需要考虑的功能"><a href="#优秀的远程框架还需要考虑的功能" class="headerlink" title="优秀的远程框架还需要考虑的功能"></a>优秀的远程框架还需要考虑的功能</h3><ol>
+<li>通用性<ul>
+<li>随时都能根据需求增加新的远程调用接口，并且不用每新增一个接口都增加一个实现类</li>
+</ul>
+</li>
+<li>与spring集成<ul>
+<li>结合IOC，简化开发</li>
+</ul>
+</li>
+<li>服务端线程池<ul>
+<li>通过线程池，实现同步处理多个RPC请求</li>
+</ul>
+</li>
+<li>考虑长连接与短连接<ul>
+<li>不能每次调用RPC接口时都开启一个Socket建立连接。保持若干个长连接，每次由RPC请求时，把请求放到任务队列中，由线程池去消费执行。参考dubbo的实现方式</li>
+</ul>
+</li>
+<li>注册中心<ul>
+<li>每个服务可能对应多个服务实例，注册中心可以管理服务实例列表，告诉哥哥服务都存在哪些实例可以调用。实例如何向注册中心注册？又如何从注册中心获取服务实例列表？</li>
+</ul>
+</li>
+<li>负载均衡<ul>
+<li>从众多的服务实例中挑一个进行请求，需要通过负载均衡来实现。负载均衡策略有很多，如何实现负载均衡？如何做到负载均衡策略可配置?</li>
+</ul>
+</li>
+<li>结果缓存<ul>
+<li>不是每远程调用一次都需要服务端执行相关的方法，一些常用的结果可以缓存起来，直接返回给客户端。如何实现缓存？(Redis等)</li>
+</ul>
+</li>
+<li>多版本控制<ul>
+<li>服务端的接口如果修改了，旧的接口怎么办？(适配器模式)</li>
+</ul>
+</li>
+<li>异步调用<ul>
+<li>如何实现异步调用</li>
+</ul>
+</li>
+<li>稳定停机<ul>
+<li>服务端要停机，队列中还有没处理完的请求怎么办？</li>
+</ul>
+</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/21/blog7_RPC框架原理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/14/blog6_java打包/" class="archive-article-date">
-  	<time datetime="2019-04-14T13:31:41.647Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/14/blog6_java打包/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java打包</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/14/blog6_java打包/">java打包</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/blog5_设计模式/" class="archive-article-date">
-  	<time datetime="2019-04-07T13:08:38.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/blog5_设计模式/">设计模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/blog4_xml笔记/" class="archive-article-date">
-  	<time datetime="2019-04-07T02:35:37.597Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/blog4_xml笔记/">xml笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -303,8 +415,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
