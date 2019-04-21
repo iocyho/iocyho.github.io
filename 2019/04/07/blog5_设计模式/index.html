@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>设计模式 | 大西洲总督的的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="单例模式 构造器器私有 提供静态私有属性（创建出来的对象长期驻留内存） 饿汉式 类加载时立即初始化属性 直观的(没有线程安全问题，调用效率高，但是暂用资源) 枚举(枚举元素天然单例，避免反射和反序列化的漏洞，调用效率高，但是不支持延时加载) 不需要延时加载时优先选择   懒汉式 类加载时不会立即初始化属性，到调用时再加载 直观的(延时加载，资源占用少，但是需要解决线程安全问题，调用效率低) 静态内">
+  <meta name="description" content="1.创建型模式 核心作用：创建对象  1.1单例模式 构造器器私有 提供静态私有属性（创建出来的对象长期驻留内存） 饿汉式 类加载时立即初始化属性 直观的(没有线程安全问题，调用效率高，但是暂用资源) 枚举(枚举元素天然单例，避免反射和反序列化的漏洞，调用效率高，但是不支持延时加载) 不需要延时加载时优先选择   懒汉式 类加载时不会立即初始化属性，到调用时再加载 直观的(延时加载，资源占用少，但">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式">
 <meta property="og:url" content="http://yoursite.com/2019/04/07/blog5_设计模式/index.html">
 <meta property="og:site_name" content="大西洲总督的的博客">
-<meta property="og:description" content="单例模式 构造器器私有 提供静态私有属性（创建出来的对象长期驻留内存） 饿汉式 类加载时立即初始化属性 直观的(没有线程安全问题，调用效率高，但是暂用资源) 枚举(枚举元素天然单例，避免反射和反序列化的漏洞，调用效率高，但是不支持延时加载) 不需要延时加载时优先选择   懒汉式 类加载时不会立即初始化属性，到调用时再加载 直观的(延时加载，资源占用少，但是需要解决线程安全问题，调用效率低) 静态内">
+<meta property="og:description" content="1.创建型模式 核心作用：创建对象  1.1单例模式 构造器器私有 提供静态私有属性（创建出来的对象长期驻留内存） 饿汉式 类加载时立即初始化属性 直观的(没有线程安全问题，调用效率高，但是暂用资源) 枚举(枚举元素天然单例，避免反射和反序列化的漏洞，调用效率高，但是不支持延时加载) 不需要延时加载时优先选择   懒汉式 类加载时不会立即初始化属性，到调用时再加载 直观的(延时加载，资源占用少，但">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-07T13:19:02.232Z">
+<meta property="og:updated_time" content="2019-04-21T04:28:31.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式">
-<meta name="twitter:description" content="单例模式 构造器器私有 提供静态私有属性（创建出来的对象长期驻留内存） 饿汉式 类加载时立即初始化属性 直观的(没有线程安全问题，调用效率高，但是暂用资源) 枚举(枚举元素天然单例，避免反射和反序列化的漏洞，调用效率高，但是不支持延时加载) 不需要延时加载时优先选择   懒汉式 类加载时不会立即初始化属性，到调用时再加载 直观的(延时加载，资源占用少，但是需要解决线程安全问题，调用效率低) 静态内">
+<meta name="twitter:description" content="1.创建型模式 核心作用：创建对象  1.1单例模式 构造器器私有 提供静态私有属性（创建出来的对象长期驻留内存） 饿汉式 类加载时立即初始化属性 直观的(没有线程安全问题，调用效率高，但是暂用资源) 枚举(枚举元素天然单例，避免反射和反序列化的漏洞，调用效率高，但是不支持延时加载) 不需要延时加载时优先选择   懒汉式 类加载时不会立即初始化属性，到调用时再加载 直观的(延时加载，资源占用少，但">
   
     <link rel="alternative" href="/atom.xml" title="大西洲总督的的博客" type="application/atom+xml">
   
@@ -178,7 +178,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><ul>
+        <h3 id="1-创建型模式"><a href="#1-创建型模式" class="headerlink" title="1.创建型模式"></a>1.创建型模式</h3><ul>
+<li>核心作用：创建对象</li>
+</ul>
+<h4 id="1-1单例模式"><a href="#1-1单例模式" class="headerlink" title="1.1单例模式"></a>1.1单例模式</h4><ul>
 <li>构造器器私有</li>
 <li>提供静态私有属性（创建出来的对象长期驻留内存）</li>
 <li>饿汉式<ul>
@@ -212,7 +215,84 @@
 </ul>
 </li>
 </ul>
-<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><ul>
+<h4 id="1-2工厂模式"><a href="#1-2工厂模式" class="headerlink" title="1.2工厂模式"></a>1.2工厂模式</h4><ul>
+<li>简单工厂模式</li>
+<li>工厂方法模式</li>
+<li>抽象工厂模式</li>
+</ul>
+<h4 id="1-3建造者模式"><a href="#1-3建造者模式" class="headerlink" title="1.3建造者模式"></a>1.3建造者模式</h4><ul>
+<li>分离了对象子组件的单独单独构造(Builder负责)和装配(Director负责),从而可以构造复杂对象</li>
+<li>实现了构造与装配的解耦，不同的构造Builder和Director组合可以创建出不同的对象</li>
+</ul>
+<h4 id="1-4原型模式"><a href="#1-4原型模式" class="headerlink" title="1.4原型模式"></a>1.4原型模式</h4><ul>
+<li>以某个对象为原型，复制出与原型属性值完全相同的新的对象。修改克隆出的新对象不会影响原有对象的属性值。</li>
+<li>省略了new对象是的一系列繁琐步骤</li>
+<li>适用于需要大量创建复杂对象的场景</li>
+<li>实现<ul>
+<li>使用原型模式需要完成内存的复制操作</li>
+<li>实现cloneable接口</li>
+<li>重写Object类的clone()方法</li>
+</ul>
+</li>
+<li>深克隆与浅克隆<ul>
+<li>浅克隆<ul>
+<li>原型对象的属性是对象时，克隆出的新对象复制的成员变量的地址值</li>
+<li>原型对象与克隆对象的属性指向同一个对象，在任何一方修改都会影响其他对象</li>
+</ul>
+</li>
+<li>深克隆<ul>
+<li>原型对象的成员变量是对象时，克隆出的新对象把成员变量也创建了一个新对象</li>
+<li>原型对象与克隆对象的属性指向不同对象</li>
+<li>实现<ul>
+<li>重写clone()方法的时候硬编码实现</li>
+<li>通过序列化和反序列化实现</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用场景<ul>
+<li>需要短时间内创建大量对象，且new的过程比较耗时，就可以采用原型模式</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-结构型模式"><a href="#2-结构型模式" class="headerlink" title="2.结构型模式"></a>2.结构型模式</h3><ul>
+<li>核心作用：从程序结构上实现解耦，扩大整体类结构，解决更大的问题</li>
+</ul>
+<h4 id="2-1适配器模式"><a href="#2-1适配器模式" class="headerlink" title="2.1适配器模式"></a>2.1适配器模式</h4><ul>
+<li>将一个类的接口转换成客户端希望的另一个接口。可以使原本不兼容的不能一起工作的类可以一起工作。</li>
+<li>模式中的角色<ul>
+<li>目标接口(Target)：客户端期待的接口，可以时具体或抽象类，也可以是接口</li>
+<li>需要适配的类(Adaptee)：需要适配的类或适配者类</li>
+<li>适配器(Adapter)：通过包装一个需要适配的对象，把原接口转换成目标接口</li>
+</ul>
+</li>
+<li>使用场景<ul>
+<li>对旧系统的改造和升级</li>
+<li>eg: 字节流转换为字符流<ul>
+<li>java.io.InputStreamReader(InputStream)</li>
+<li>java.io.OutputStreamWriter(OutputStream)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>实现方式</p>
+<ul>
+<li><p>类适配器</p>
+<ul>
+<li><p>适配器(Adapter)实现目标接口，同时继承需要适配的类(Adaptee)，通过调用父类方法的方式实现转接</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public Adapter extends Adaptee implements Target&#123;</span><br><span class="line">	public void request()&#123;</span><br><span class="line">		super.specificRequest();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>适配器(Adapter)实现目标接口，把需要适配的类(Adaptee)作为成员变量，通过调用成员变量的方法实现转接</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Adapter implements Target&#123;</span><br><span class="line">	private Adaptee adaptee;</span><br><span class="line">	</span><br><span class="line">	public Adapter(Adaptee adaptee)&#123;</span><br><span class="line">		this.adaptee = adaptee;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void request()&#123;</span><br><span class="line">		this.adaptee.specificRequest();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-2代理模式"><a href="#2-2代理模式" class="headerlink" title="2.2代理模式"></a>2.2代理模式</h4><ul>
 <li>实现类与代理类实现共同的抽象接口</li>
 <li>核心作用：通过代理,控制对对象的访问(在不改变类(对象)本身的情况下对方法进行增强)</li>
 <li>核心角色：<ul>
@@ -260,7 +340,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="施工中…"><a href="#施工中…" class="headerlink" title="施工中…"></a><em>施工中…</em></h3>
+<h4 id="2-3桥接模式"><a href="#2-3桥接模式" class="headerlink" title="2.3桥接模式"></a>2.3桥接模式</h4><h4 id="2-4装饰模式"><a href="#2-4装饰模式" class="headerlink" title="2.4装饰模式"></a>2.4装饰模式</h4><h4 id="2-5组合模式"><a href="#2-5组合模式" class="headerlink" title="2.5组合模式"></a>2.5组合模式</h4><h4 id="2-6外观模式"><a href="#2-6外观模式" class="headerlink" title="2.6外观模式"></a>2.6外观模式</h4><h4 id="2-7享元模式"><a href="#2-7享元模式" class="headerlink" title="2.7享元模式"></a>2.7享元模式</h4><h3 id="3-行为型模式"><a href="#3-行为型模式" class="headerlink" title="3.行为型模式"></a>3.行为型模式</h3><h4 id="3-1责任链模式"><a href="#3-1责任链模式" class="headerlink" title="3.1责任链模式"></a>3.1责任链模式</h4><h4 id="3-2迭代器模式"><a href="#3-2迭代器模式" class="headerlink" title="3.2迭代器模式"></a>3.2迭代器模式</h4><h4 id="3-3中介者模式"><a href="#3-3中介者模式" class="headerlink" title="3.3中介者模式"></a>3.3中介者模式</h4><h4 id="3-4命令模式"><a href="#3-4命令模式" class="headerlink" title="3.4命令模式"></a>3.4命令模式</h4><h4 id="3-5解释器模式"><a href="#3-5解释器模式" class="headerlink" title="3.5解释器模式"></a>3.5解释器模式</h4><h3 id="施工中…"><a href="#施工中…" class="headerlink" title="施工中…"></a><em>施工中…</em></h3>
       
 
       
