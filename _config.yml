@@ -6,8 +6,8 @@
 title: 大西洲总督的的博客
 subtitle: tan90°
 description: 活在梦里的初级码农
-#keywords:
 author: 大西洲总督
+#keywords:
 #language:
 #timezone:
 
@@ -82,6 +82,16 @@ deploy:
   repo: git@github.com:iocyho/iocyho.github.io.git
   branch: master
 
+sitemap:
+    path: sitemap.xml
+baidusitemap:
+    path: baidusitemap.xm
+
+feed:
+    type: atom
+    path: atom.xml
+    limit: 100
+
 jsonContent:
   meta: false
   pages: false
@@ -89,14 +99,14 @@ jsonContent:
     title: true
     date: true
     path: true
-      text: false
-      raw: false
-      content: false
-      slug: false
-      updated: false
-      comments: false
-      link: false
-      permalink: false
-      excerpt: false
-      categories: false
-      tags: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true
