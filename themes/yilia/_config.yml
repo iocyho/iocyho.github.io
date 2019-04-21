@@ -3,12 +3,6 @@
 menu:
   主页: /
   随笔: /tags/随笔/
-
-# Site
-title: 大西洲总督的的博客
-subtitle: tan90°
-description: 活在梦里的初级码农
-author: 大西洲总督  
   
 # SubNav
 subnav:
@@ -74,7 +68,7 @@ google_analytics: ''
 favicon: /favicon.png
 
 #你的头像url
-avatar: http://yanxuan.nosdn.127.net/fece6c6b3e4927a4933814fb63505184.jpg
+avatar: https://i.loli.net/2019/04/21/5cbbcd42bac07.jpg
 
 #是否开启分享
 share_jia: true
