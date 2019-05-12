@@ -155,6 +155,179 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-blog11_注解与反射" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/12/blog11_注解与反射/">反射与注解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/12/blog11_注解与反射/" class="archive-article-date">
+  	<time datetime="2019-05-12T13:24:01.072Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><h5 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h5><ul>
+<li>将类的各个组成部分封装成其他对象</li>
+</ul>
+<h5 id="如何获取Class类对象"><a href="#如何获取Class类对象" class="headerlink" title="如何获取Class类对象"></a>如何获取Class类对象</h5><ul>
+<li>Class.forName(“全限定类名”) – 源码阶段 </li>
+<li>类名.class – Class类对象阶段(程序启动，类在内存中被创建)</li>
+<li>对象.getClass() – Runtime运行时阶段</li>
+</ul>
+<h5 id="得到类的Class对象后可以做什么"><a href="#得到类的Class对象后可以做什么" class="headerlink" title="得到类的Class对象后可以做什么"></a>得到类的Class对象后可以做什么</h5><ul>
+<li>获取包名<ul>
+<li>String getPackage()</li>
+</ul>
+</li>
+<li>获取类名<ul>
+<li>String getName()</li>
+</ul>
+</li>
+<li>创建对象实例<ul>
+<li>claz.newInstcane()</li>
+</ul>
+</li>
+<li>操作类的成员变量</li>
+<li>操作类的构造方法</li>
+<li>操作类的成员方法<ul>
+<li>Method[] getMethods() 获取所有<strong>public修饰</strong>的成员方法</li>
+<li>Method getMethod(String methodName) 根据名称获取<strong>public修饰</strong>的指定方法</li>
+<li>method.invoke(对象实例) 反射调用对象的方法</li>
+<li>暴力反射<ul>
+<li><font color="red">忽略访问权限修饰符的安全检查</font><ul>
+<li>setAccessible(true)</li>
+</ul>
+</li>
+<li>获取<strong>任意权限</strong>的成员变量、构造方法、成员方法<ul>
+<li>get<strong>Declare</strong>Fields()</li>
+<li>get<strong>Declare</strong>Constructors()</li>
+<li>get<strong>Declare</strong>Methods()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><font color="red">参考JDK_Api</font>
+
+
+</li>
+</ul>
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><h5 id="什么是注解"><a href="#什么是注解" class="headerlink" title="什么是注解"></a>什么是注解</h5><ul>
+<li>一种代码级别的说明，与类、接口、枚举在同一个层次。可以声明在包、类、字段、参数等前面，用于对这些元素进行说明</li>
+<li><font color="red">注解本质上就是一个接口，该接口默认继承Annotation接口</font></li>
+<li>注解与注释<ul>
+<li>注解用于说明程序，给计算机看的</li>
+<li>注释用文字描述程序，给程序员看的</li>
+</ul>
+</li>
+</ul>
+<h5 id="注解的作用"><a href="#注解的作用" class="headerlink" title="注解的作用"></a>注解的作用</h5><ul>
+<li>编写文档：通过代码里标识的注解生成doc文档(就是文档注释中的注解)</li>
+<li>代码分析：通过代码里标识的注解对代码进行分析(通过反射实现)</li>
+<li>编译检查：通过代码里标识的注解，让编译器实现最基本的检查(如@Override)</li>
+</ul>
+<h5 id="使用注解"><a href="#使用注解" class="headerlink" title="使用注解"></a>使用注解</h5><ul>
+<li>java的预定义注解<ul>
+<li>@Override 检测方法是否是继承(实现)父类(接口)的</li>
+<li>@Deprecated 标注该注解的内容已过时</li>
+<li>@SupperssWarnnings 压制警告</li>
+</ul>
+</li>
+<li><p>自定义注解</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">元注解</span><br><span class="line">public @interface 注解名称&#123;</span><br><span class="line">	注解属性</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>元注解-用于描述注解的注解</p>
+<ul>
+<li>@Target 描述注解的作用位置</li>
+<li>@Retention 描述注解被保留的阶段</li>
+<li>@Documented 描述注解是否会被抽取到Api文档中</li>
+<li>@Inherited 描述注解是否被子类继承</li>
+</ul>
+</li>
+<li>注解属性<ul>
+<li>属性返回值类型：<ul>
+<li>基本数据类型</li>
+<li>String</li>
+<li>枚举</li>
+<li>注解</li>
+<li>以上类型的一维数组</li>
+</ul>
+</li>
+<li>属性赋值<ul>
+<li>定义注解时，使用default关键字给注解进行初始化赋值，使用注解时可以不对该属性赋值</li>
+<li>有且仅有一个属性，且属性名位value时，可以省value(如spring的各种注解)</li>
+<li>数组赋值时，使用{}包裹，如果数组中只有一个值，{}可以省略</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>在程序中使用注解</strong><ul>
+<li><font color="orange">检查对象上是否有指定的注解</font><ol>
+<li>获取注解定义位置的对象(Class、Method、Field)</li>
+<li>对象.isAnnotationPresent(注解字节码)</li>
+</ol>
+</li>
+<li><font color="orange">获取注解中的属性值</font><ol>
+<li>获取注解定义位置的对象(Class、Method、Field)</li>
+<li>获取指定注解 getAnnotation(注解的字节码)<br> 这一步本质是在内存中生成了一个该注解接口的子类实现对象</li>
+<li>调用注解中的抽象方法获取配置的属性值</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/12/blog11_注解与反射/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-blog10_《程序是怎样跑起来的》读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1979,69 +2152,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/03/27/blog2_使用Hexo搭建个人博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-blog1_开端" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/27/blog1_开端/">开端</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/27/blog1_开端/" class="archive-article-date">
-  	<time datetime="2019-03-26T16:46:18.280Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1553626749098&amp;di=5cfb4dcc980faa606bf4f280c2770770&amp;imgtype=0&amp;src=http%3A%2F%2Fcdn.8btc.com%2Fwp-content%2Fuploads%2F2018%2F04%2F201804191008419953.jpg" alt="Hello World!" title="此处应有图"></p>
-<h4 id="emsp-emsp-“好记性不如烂笔头，烂笔头不如云笔记。”受到网上各路大神的启发，以及自己平时做笔记的经历，意识到把写作是一种非常好的学习手段，可以帮助自己更深入地思考。之前一直就有把以前的各种零散笔记进行统一整理的想法，但是始终没能把这件事情落实下来。不久前偶然从B站了解到了Hexo框架，通过GitHub就可以以一种非常简单的方式搭建自己的博客平台。突然想到这不正是一个整理笔记的好方法么，所有的笔记都用md文件记录，统一用GibHub进行管理。这样既可以集中整理，也实现了备份，可以跨平台共享。在整理笔记的过程中一方面是进行了复习，另一方也当作是MarkDown语法练习。此外Hexo还可以通过md文件自动生成博客页面，方便浏览，在提交的过程中又少不了跟GitHub打交道，正好借此进一步熟悉各种操作。这样一件一举多得的大好事，还是免费的，何乐而不为。"><a href="#emsp-emsp-“好记性不如烂笔头，烂笔头不如云笔记。”受到网上各路大神的启发，以及自己平时做笔记的经历，意识到把写作是一种非常好的学习手段，可以帮助自己更深入地思考。之前一直就有把以前的各种零散笔记进行统一整理的想法，但是始终没能把这件事情落实下来。不久前偶然从B站了解到了Hexo框架，通过GitHub就可以以一种非常简单的方式搭建自己的博客平台。突然想到这不正是一个整理笔记的好方法么，所有的笔记都用md文件记录，统一用GibHub进行管理。这样既可以集中整理，也实现了备份，可以跨平台共享。在整理笔记的过程中一方面是进行了复习，另一方也当作是MarkDown语法练习。此外Hexo还可以通过md文件自动生成博客页面，方便浏览，在提交的过程中又少不了跟GitHub打交道，正好借此进一步熟悉各种操作。这样一件一举多得的大好事，还是免费的，何乐而不为。" class="headerlink" title="&emsp;&emsp;“好记性不如烂笔头，烂笔头不如云笔记。”受到网上各路大神的启发，以及自己平时做笔记的经历，意识到把写作是一种非常好的学习手段，可以帮助自己更深入地思考。之前一直就有把以前的各种零散笔记进行统一整理的想法，但是始终没能把这件事情落实下来。不久前偶然从B站了解到了Hexo框架，通过GitHub就可以以一种非常简单的方式搭建自己的博客平台。突然想到这不正是一个整理笔记的好方法么，所有的笔记都用md文件记录，统一用GibHub进行管理。这样既可以集中整理，也实现了备份，可以跨平台共享。在整理笔记的过程中一方面是进行了复习，另一方也当作是MarkDown语法练习。此外Hexo还可以通过md文件自动生成博客页面，方便浏览，在提交的过程中又少不了跟GitHub打交道，正好借此进一步熟悉各种操作。这样一件一举多得的大好事，还是免费的，何乐而不为。"></a>&emsp;&emsp;“好记性不如烂笔头，烂笔头不如云笔记。”受到网上各路大神的启发，以及自己平时做笔记的经历，意识到把写作是一种非常好的学习手段，可以帮助自己更深入地思考。之前一直就有把以前的各种零散笔记进行统一整理的想法，但是始终没能把这件事情落实下来。不久前偶然从B站了解到了Hexo框架，通过GitHub就可以以一种非常简单的方式搭建自己的博客平台。突然想到这不正是一个整理笔记的好方法么，所有的笔记都用md文件记录，统一用GibHub进行管理。这样既可以集中整理，也实现了备份，可以跨平台共享。在整理笔记的过程中一方面是进行了复习，另一方也当作是MarkDown语法练习。此外Hexo还可以通过md文件自动生成博客页面，方便浏览，在提交的过程中又少不了跟GitHub打交道，正好借此进一步熟悉各种操作。这样一件一举多得的大好事，还是免费的，何乐而不为。</h4><h4 id="emsp-emsp-在正式开始前，脑子里思绪万千，仿佛有道不完的想法，但真到打开文档，又感觉无从下手。不得不让人感叹理想和现实的差距。但不管怎么说，经过一番折腾，博客的基本架子已经搭起来了，算是一个好的开始。接下来就是打算把以前的笔记好好整理一番，再就是及时将一些学到的新内容以及踩过的坑及时记录下来，希望能通过做这样一件事，以项目驱动的方式倒逼自己更快成长。"><a href="#emsp-emsp-在正式开始前，脑子里思绪万千，仿佛有道不完的想法，但真到打开文档，又感觉无从下手。不得不让人感叹理想和现实的差距。但不管怎么说，经过一番折腾，博客的基本架子已经搭起来了，算是一个好的开始。接下来就是打算把以前的笔记好好整理一番，再就是及时将一些学到的新内容以及踩过的坑及时记录下来，希望能通过做这样一件事，以项目驱动的方式倒逼自己更快成长。" class="headerlink" title="&emsp;&emsp;在正式开始前，脑子里思绪万千，仿佛有道不完的想法，但真到打开文档，又感觉无从下手。不得不让人感叹理想和现实的差距。但不管怎么说，经过一番折腾，博客的基本架子已经搭起来了，算是一个好的开始。接下来就是打算把以前的笔记好好整理一番，再就是及时将一些学到的新内容以及踩过的坑及时记录下来，希望能通过做这样一件事，以项目驱动的方式倒逼自己更快成长。"></a>&emsp;&emsp;在正式开始前，脑子里思绪万千，仿佛有道不完的想法，但真到打开文档，又感觉无从下手。不得不让人感叹理想和现实的差距。但不管怎么说，经过一番折腾，博客的基本架子已经搭起来了，算是一个好的开始。接下来就是打算把以前的笔记好好整理一番，再就是及时将一些学到的新内容以及踩过的坑及时记录下来，希望能通过做这样一件事，以项目驱动的方式倒逼自己更快成长。</h4><h4 id="emsp-emsp-凡是贵在坚持，记录尤其如此。”不积硅步，无以至千里”，希望今天的开端能成为日后回首过往时的一个重要见证。"><a href="#emsp-emsp-凡是贵在坚持，记录尤其如此。”不积硅步，无以至千里”，希望今天的开端能成为日后回首过往时的一个重要见证。" class="headerlink" title="&emsp;&emsp;凡是贵在坚持，记录尤其如此。”不积硅步，无以至千里”，希望今天的开端能成为日后回首过往时的一个重要见证。"></a>&emsp;&emsp;凡是贵在坚持，记录尤其如此。”不积硅步，无以至千里”，希望今天的开端能成为日后回首过往时的一个重要见证。</h4>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/27/blog1_开端/">展开全文 >></a>
         </p>
       
 
