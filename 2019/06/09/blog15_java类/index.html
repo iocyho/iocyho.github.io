@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.iocyho.top">
-  <title>Archives | 大西洲总督的的博客</title>
+  <title>java类 | 大西洲总督的的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="活在梦里的初级码农">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大西洲总督的的博客">
-<meta property="og:url" content="https://www.iocyho.top/archives/index.html">
+  <meta name="description" content="类加载机制什么是类的加载 jvm通过一个类的全限定类名来获取定义此类的二进制字节流(不仅限于.class文件，也包括网络、动态生成、数据库等渠道获取的)，将字节流读取到内存中，存放到运行时数据区的方法区内，在堆中创建一个java.lang.Class(元信息对象)，用于封装在方法区内的结构信息(如构造函数、属性方法等)。类加载过程 加载 连接 初始化  类加载器 启动类加载器 BootStrap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java类">
+<meta property="og:url" content="https://www.iocyho.top/2019/06/09/blog15_java类/index.html">
 <meta property="og:site_name" content="大西洲总督的的博客">
-<meta property="og:description" content="活在梦里的初级码农">
+<meta property="og:description" content="类加载机制什么是类的加载 jvm通过一个类的全限定类名来获取定义此类的二进制字节流(不仅限于.class文件，也包括网络、动态生成、数据库等渠道获取的)，将字节流读取到内存中，存放到运行时数据区的方法区内，在堆中创建一个java.lang.Class(元信息对象)，用于封装在方法区内的结构信息(如构造函数、属性方法等)。类加载过程 加载 连接 初始化  类加载器 启动类加载器 BootStrap">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/09/VsOKZd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/09/VsOMdA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/09/VsOQII.png">
+<meta property="og:updated_time" content="2019-06-09T15:44:42.777Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大西洲总督的的博客">
-<meta name="twitter:description" content="活在梦里的初级码农">
+<meta name="twitter:title" content="java类">
+<meta name="twitter:description" content="类加载机制什么是类的加载 jvm通过一个类的全限定类名来获取定义此类的二进制字节流(不仅限于.class文件，也包括网络、动态生成、数据库等渠道获取的)，将字节流读取到内存中，存放到运行时数据区的方法区内，在堆中创建一个java.lang.Class(元信息对象)，用于封装在方法区内的结构信息(如构造函数、属性方法等)。类加载过程 加载 连接 初始化  类加载器 启动类加载器 BootStrap">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/06/09/VsOKZd.png">
   
     <link rel="alternative" href="/atom.xml" title="大西洲总督的的博客" type="application/atom+xml">
   
@@ -153,295 +158,206 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-blog15_java类" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      java类
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/09/blog15_java类/" class="archive-article-date">
+
+        
+        <a href="/2019/06/09/blog15_java类/" class="archive-article-date">
   	<time datetime="2019-06-09T15:45:15.066Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-09</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/09/blog15_java类/">java类</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h4><h5 id="什么是类的加载"><a href="#什么是类的加载" class="headerlink" title="什么是类的加载"></a>什么是类的加载</h5><ul>
+<li>jvm通过一个类的全限定类名来获取定义此类的二进制字节流(不仅限于.class文件，也包括网络、动态生成、数据库等渠道获取的)，将字节流读取到内存中，存放到运行时数据区的方法区内，在堆中创建一个java.lang.Class(元信息对象)，用于封装在方法区内的结构信息(如构造函数、属性方法等)。<br><img src="https://s2.ax1x.com/2019/06/09/VsOKZd.png" alt="类加载机制"><h5 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h5></li>
+<li>加载</li>
+<li>连接</li>
+<li>初始化<br><img src="https://s2.ax1x.com/2019/06/09/VsOMdA.png" alt="类加载过程"></li>
+</ul>
+<h4 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h4><ol>
+<li>启动类加载器 BootStrap ClassLoader<ul>
+<li>用C++编写的，java虚拟机的一部分，作用是将<java home>\lib目录下，或是被-Xbootclasspath参数所指定路径的，能被jvm识别的(仅按文件名识别，如xx.jar)类加载到内存中。</java></li>
+</ul>
+</li>
+<li>扩展类加载器 Extention ClassLoader<ul>
+<li>用java编写，由sun.misc.Luncher$ExtClassLoader实现，作用是加载<java home>\lib\ext目录下，或是被java.ext.dir系统变量所指定路径中的所有类库，开发人员可以直接使用扩展类加载器</java></li>
+</ul>
+</li>
+<li>应用程序类加载器 Application ClassLoader<ul>
+<li>用java编写，由sun.misc.Luncher$AppClassLoader实现，这个类加载器是ClassLoader中getSystemClassLoader()方法的返回值，因此也叫系统类加载器</li>
+<li>负责加载用户类路径(ClassPath)中所指定的类库。开发人员可以直接使用这个类加载器，如果程序中没有自定义的类加载器，这个就是默认的类加载器</li>
+</ul>
+</li>
+<li>自定义类加载器<ul>
+<li>使用的程序都是三种类加载器互相配合进行加载的，如果有必要，开发者也可以自定义类加载器，继承应用程序类加载器，重写findClass(String name)方法即可<br><img src="https://s2.ax1x.com/2019/06/09/VsOQII.png" alt="类加载器继承关系"></li>
+</ul>
+</li>
+</ol>
+<h4 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h4><ul>
+<li>什么是双亲委派模型<ul>
+<li>当一个类加载器收到加载请求，它首先不会自己尝试加载这个类，而是直接委派给父类加载器完成，每一层类加载器都如此，直到所有类加载请求都传递到顶层的类加载器中。只有当父类加载器无法完成加载请求(这个要加载的类不在它的搜索范围内)，子加载器才会自己尝试加载。</li>
+</ul>
+</li>
+<li>为什么要有双亲委派模型<ul>
+<li>java类与它的类加载器一起，具备了一种带有优先级的层次关系，保障Java体系的一致性。</li>
+<li>每个类加载器只加载自己范围内的类，避免一个类被重复加载。</li>
+<li>比如java.lang.Object类存放在&lt;JAVA_HOME&gt;\lib目录中的rt.jar中，任何一个类加载器想加载它最终都会委派到顶层的启动类加载器去加载。如果不使用双亲委派模型，用户可以自定义一个java.lang.Object类，存放在ClassPath，由应用程序加载器去直接加载，就会导致系统中出现多个Object,类，造成混乱。</li>
+</ul>
+</li>
+</ul>
+<h4 id="实例化一个类"><a href="#实例化一个类" class="headerlink" title="实例化一个类"></a>实例化一个类</h4><ul>
+<li>实例化一个类的方法(创建对象)<ol>
+<li>通过new关键字创建对象</li>
+<li>通过工厂方法返回对象，String str = String.valueOf(23)</li>
+<li>通过反射返回对象</li>
+<li>通过clone()方法克隆对象</li>
+<li>通过IO流反序列化获取对象</li>
+</ol>
+</li>
+<li>instanceof 与 instance()<ul>
+<li>instanceof是一个运算符，obj instanceof class 判断对象是否属于该类，成立返回true，否则返回false</li>
+<li>instance()是类的一个方法，claz.instance(obj)，判断当前类能不能实例化成该对象，成立返回true，否则返回false</li>
+</ul>
+</li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.iocyho.top/2019/06/09/blog15_java类/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/02/blog14_vim/" class="archive-article-date">
-  	<time datetime="2019-06-02T12:52:21.569Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/02/blog14_vim/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vim使用技巧</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/02/blog14_vim/">vim使用技巧</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/26/blog13_dubbo/" class="archive-article-date">
-  	<time datetime="2019-05-26T12:26:59.782Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/26/blog13_dubbo/">dubbo</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/19/blog12_Junit/" class="archive-article-date">
-  	<time datetime="2019-05-19T08:31:50.587Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/19/blog12_Junit/">Junit单元测试</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/12/blog11_注解与反射/" class="archive-article-date">
-  	<time datetime="2019-05-12T13:24:01.072Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/12/blog11_注解与反射/">反射与注解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/04/blog10_《程序是怎样跑起来的》读书笔记/" class="archive-article-date">
-  	<time datetime="2019-05-04T13:40:00.537Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/04/blog10_《程序是怎样跑起来的》读书笔记/">《程序是怎样跑起来的》读书笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/03/blog9_《计算机是样跑起来的》读书笔记/" class="archive-article-date">
-  	<time datetime="2019-05-03T11:34:10.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/03/blog9_《计算机是样跑起来的》读书笔记/">《计算机是怎样跑起来的》读书笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/blog8_maven笔记/" class="archive-article-date">
-  	<time datetime="2019-04-28T15:27:55.069Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/blog8_maven笔记/">maven笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/21/blog7_RPC框架原理/" class="archive-article-date">
-  	<time datetime="2019-04-21T14:55:47.738Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/21/blog7_RPC框架原理/">RPC框架</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/14/blog6_java打包/" class="archive-article-date">
-  	<time datetime="2019-04-14T13:31:41.647Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/14/blog6_java打包/">java打包</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -465,8 +381,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
