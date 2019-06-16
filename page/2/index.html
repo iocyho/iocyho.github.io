@@ -155,6 +155,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-blog6_java打包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/blog6_java打包/">java打包</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/14/blog6_java打包/" class="archive-article-date">
+  	<time datetime="2019-04-14T13:31:41.647Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="普通javaSE工程打可执行jar包"><a href="#普通javaSE工程打可执行jar包" class="headerlink" title="普通javaSE工程打可执行jar包"></a>普通javaSE工程打可执行jar包</h3><h4 id="方法一：eclipse导出为Runnable-Jar即可"><a href="#方法一：eclipse导出为Runnable-Jar即可" class="headerlink" title="方法一：eclipse导出为Runnable Jar即可"></a>方法一：eclipse导出为Runnable Jar即可</h4><ul>
+<li>需要将main方法至少运行一次，否则会找不到主方法</li>
+</ul>
+<h4 id="方法二：maven打包即可"><a href="#方法二：maven打包即可" class="headerlink" title="方法二：maven打包即可"></a>方法二：maven打包即可</h4><h3 id="springboot工程打包"><a href="#springboot工程打包" class="headerlink" title="springboot工程打包"></a>springboot工程打包</h3><h4 id="1-打jar包"><a href="#1-打jar包" class="headerlink" title="1. 打jar包"></a>1. 打jar包</h4><ul>
+<li>导入依赖</li>
+<li>配置文件(指定页面前后缀等)</li>
+<li>配置插件如果需要访问jsp页面，需要将打包插件版本指定为1.4.2.RELEASE（其他版本有问题，会造成jsp无法访问）</li>
+<li>cmd使用java -jar命令即可启动打好的jar包</li>
+</ul>
+<h4 id="2-打war包"><a href="#2-打war包" class="headerlink" title="2.打war包"></a>2.打war包</h4><h5 id="使用maven打包"><a href="#使用maven打包" class="headerlink" title="使用maven打包"></a>使用maven打包</h5><ul>
+<li><p>启动类继承 SpringBootServletInitializer类，重写configure方法</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected SpringApplicationBulider configure(SpringApplicactionBuilder appliction)&#123;</span><br><span class="line">	return appliction.sources(当前类.class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>pom文件中的打包类型修改为war</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;package&gt;war&lt;/package&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>pom中配置打包插件(一般创建工程的时候会自动加入)</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">	&lt;groudId&gt;org.springframework.boot&lt;/groudId&gt;</span><br><span class="line">	&lt;artifactId&gt;springboot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用maven package或者 maven install，把target目录下生成的war包部署到tomcat中运行即可</p>
+</li>
+<li>注意：工程中application.properties/yml 关于端口和项目路径的配置只对springboot内置的tomcat有效(即只有打jar包的时候才会生效),打war包会忽略这个配置，以实际部署的tomcat为准。</li>
+</ul>
+<h3 id="其他：springboot访问jsp"><a href="#其他：springboot访问jsp" class="headerlink" title="其他：springboot访问jsp"></a>其他：springboot访问jsp</h3><ul>
+<li>创建webapp文件夹，放入jsp文件</li>
+<li>pom文件中配置<resources>指定jsp文件位置  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">	&lt;resource&gt;</span><br><span class="line">		&lt;directory&gt;src/mian/java&lt;/directory&gt;</span><br><span class="line">		&lt;includes&gt;</span><br><span class="line">			&lt;include&gt;**/*.xml&lt;/include&gt;</span><br><span class="line">		&lt;/includes&gt;</span><br><span class="line">	&lt;/resource&gt;</span><br><span class="line">	&lt;resource&gt;</span><br><span class="line">		&lt;directory&gt;src/mian/resources&lt;/directory&gt;</span><br><span class="line">		&lt;includes&gt;</span><br><span class="line">			&lt;include&gt;**/*.*&lt;/include&gt;</span><br><span class="line">		&lt;/includes&gt;</span><br><span class="line">	&lt;/resource&gt;</span><br><span class="line">	&lt;!-- springboot程序中要访问jsp需要进行这个配置，并将jsp页面放进targetpath指定的文件夹中 --&gt;</span><br><span class="line">	&lt;resource&gt;</span><br><span class="line">		&lt;directory&gt;src/mian/webapp&lt;/directory&gt;</span><br><span class="line">		&lt;targetpath&gt;META-INF/resources&lt;/targetpath&gt;</span><br><span class="line">		&lt;includes&gt;</span><br><span class="line">			&lt;include&gt;**/*.*&lt;/include&gt;</span><br><span class="line">		&lt;/includes&gt;</span><br><span class="line">	&lt;/resource&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+</resources></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><h5 id="springBoot打包"><a href="#springBoot打包" class="headerlink" title="springBoot打包"></a><a href="https://www.bilibili.com/video/av49037328/?p=73" target="_blank" rel="noopener">springBoot打包</a></h5>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/blog6_java打包/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-blog5_设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
