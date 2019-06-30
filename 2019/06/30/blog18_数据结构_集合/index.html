@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.iocyho.top">
-  <title>Archives: 2019 | 大西洲总督的的博客</title>
+  <title>集合 | 大西洲总督的的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="活在梦里的初级码农">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大西洲总督的的博客">
-<meta property="og:url" content="https://www.iocyho.top/archives/2019/page/2/index.html">
+  <meta name="description" content="value(Collection) List-存储的值有序可重复 ArrayList与LinkedList ArrayList底层使用的是数组，数组有索引，因此可以快速查询指定位置元素，但是由于添加或是删除元素时需要移动内存空间，因此修改比较慢 LinkedList底层使用的是链表，增删快(修改不需要移动内存，只需要改变引用指向)，查询慢(由于元素在内存中的地址不连续，因此需要从头到尾遍历)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合">
+<meta property="og:url" content="https://www.iocyho.top/2019/06/30/blog18_数据结构_集合/index.html">
 <meta property="og:site_name" content="大西洲总督的的博客">
-<meta property="og:description" content="活在梦里的初级码农">
+<meta property="og:description" content="value(Collection) List-存储的值有序可重复 ArrayList与LinkedList ArrayList底层使用的是数组，数组有索引，因此可以快速查询指定位置元素，但是由于添加或是删除元素时需要移动内存空间，因此修改比较慢 LinkedList底层使用的是链表，增删快(修改不需要移动内存，只需要改变引用指向)，查询慢(由于元素在内存中的地址不连续，因此需要从头到尾遍历)">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z3E59I.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z3EI3t.png">
+<meta property="og:updated_time" content="2019-06-30T13:52:05.907Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大西洲总督的的博客">
-<meta name="twitter:description" content="活在梦里的初级码农">
+<meta name="twitter:title" content="集合">
+<meta name="twitter:description" content="value(Collection) List-存储的值有序可重复 ArrayList与LinkedList ArrayList底层使用的是数组，数组有索引，因此可以快速查询指定位置元素，但是由于添加或是删除元素时需要移动内存空间，因此修改比较慢 LinkedList底层使用的是链表，增删快(修改不需要移动内存，只需要改变引用指向)，查询慢(由于元素在内存中的地址不连续，因此需要从头到尾遍历)">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/06/30/Z3E59I.png">
   
     <link rel="alternative" href="/atom.xml" title="大西洲总督的的博客" type="application/atom+xml">
   
@@ -153,268 +157,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-blog18_数据结构_集合" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      集合
+    </h1>
+  
+
+        
+        <a href="/2019/06/30/blog18_数据结构_集合/" class="archive-article-date">
+  	<time datetime="2019-06-30T13:48:00.716Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-30</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="value-Collection"><a href="#value-Collection" class="headerlink" title="value(Collection)"></a>value(Collection)</h4><ul>
+<li>List-存储的值有序可重复<ul>
+<li>ArrayList与LinkedList<ul>
+<li>ArrayList底层使用的是数组，数组有索引，因此可以快速查询指定位置元素，但是由于添加或是删除元素时需要移动内存空间，因此修改比较慢</li>
+<li>LinkedList底层使用的是链表，增删快(修改不需要移动内存，只需要改变引用指向)，查询慢(由于元素在内存中的地址不连续，因此需要从头到尾遍历)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Set-存储的值无序不可重复。根据hashCode(位置)和equals(内容)判断集合中的元素是否重复，如果一个对象要存储在set中，必须重写hashCode和equals方法</li>
+</ul>
+<h4 id="key-value-Map"><a href="#key-value-Map" class="headerlink" title="key-value(Map)"></a>key-value(Map)</h4><ul>
+<li>HashMap<ul>
+<li><img src="https://s2.ax1x.com/2019/06/30/Z3E59I.png" alt="HashMap结构1.7"></li>
+<li>大方向上HashMap底层是一个Node数组(可能不是每个存储空间中都有实例内容)<ul>
+<li>capacity-数组容量，初始16，大小保持位2^n，每次*2扩容</li>
+<li>loadFactor-负载因子，默认位0.75</li>
+<li>threshold-扩容阀值，达到阀值后再添加一个元素就进行扩容，扩容的方式是新建一个长度为原来两倍的数组，将旧元素全部挪到新数组中</li>
+</ul>
+</li>
+<li>数组中的元素是单向列表<ul>
+<li>JDK1.8进行了优化，改为链表+红黑树，节点数比较少时，仍然是链表，大于8(第9个)就转为红黑树。红黑树节点小于7(第6个)，转为链表</li>
+<li><img src="https://s2.ax1x.com/2019/06/30/Z3EI3t.png" alt="HashMap结构1.8"></li>
+<li>链表/红黑树总存储的元素是Entry实例</li>
+<li>每个Entry包含key(键)，value(值)，hash(用于确定再数组中的位置)，next(链表指向)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HashMap与HashTable<ul>
+<li>hashMap可以把null作为key或者value，而hashTable不可以</li>
+<li>hashMap线程不安全，因此效率高，而hashTable线程安全，但是效率较低</li>
+</ul>
+</li>
+<li>CurentHashMap(1.5之后)<ul>
+<li>将一个大的Map分成多个Segment(类似于HashTable)，由Segment实现线程安全。并发状态下，多个线程可以同时对多个Segment进行操作，因此可以确保效率的同时实现线程安全。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Collection与Collections的区别"><a href="#Collection与Collections的区别" class="headerlink" title="Collection与Collections的区别"></a>Collection与Collections的区别</h4><ul>
+<li>java.util.Collection是java集合类的顶级接口，定义对集合对象进行基本操作的通用方法。直接继承的接口由List和Set</li>
+<li>java.util.Collections是集合类的一个工具类，提供了一系列的静态方法，可以方便地对集合进行排序、搜索(找出最大最小元素)以及实现线程安全等操作。</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/blog8_maven笔记/" class="archive-article-date">
-  	<time datetime="2019-04-28T15:27:55.069Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/blog8_maven笔记/">maven笔记</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.iocyho.top/2019/06/30/blog18_数据结构_集合/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/21/blog7_RPC框架原理/" class="archive-article-date">
-  	<time datetime="2019-04-21T14:55:47.738Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/23/blog17_分布式事务/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">分布式事务</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/21/blog7_RPC框架原理/">RPC框架</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/14/blog6_java打包/" class="archive-article-date">
-  	<time datetime="2019-04-14T13:31:41.647Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/14/blog6_java打包/">java打包</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/blog5_设计模式/" class="archive-article-date">
-  	<time datetime="2019-04-07T13:08:38.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/blog5_设计模式/">设计模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/blog4_xml笔记/" class="archive-article-date">
-  	<time datetime="2019-04-07T02:35:37.597Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/blog4_xml笔记/">xml笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/31/blog3_webservice笔记/" class="archive-article-date">
-  	<time datetime="2019-03-30T18:03:02.412Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/31/blog3_webservice笔记/">Web services笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/27/blog2_使用Hexo搭建个人博客/" class="archive-article-date">
-  	<time datetime="2019-03-27T14:32:11.798Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/blog2_使用Hexo搭建个人博客/">通过Hexo搭建个人博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/27/blog1_开端/" class="archive-article-date">
-  	<time datetime="2019-03-26T16:46:18.280Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/blog1_开端/">开端</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/25/hello-world/" class="archive-article-date">
-  	<time datetime="2019-03-25T10:27:03.767Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -438,8 +371,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
