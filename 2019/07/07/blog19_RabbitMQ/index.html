@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.iocyho.top">
-  <title>Archives | 大西洲总督的的博客</title>
+  <title>RabbitMQ | 大西洲总督的的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="活在梦里的初级码农">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大西洲总督的的博客">
-<meta property="og:url" content="https://www.iocyho.top/archives/page/2/index.html">
+  <meta name="description" content="AMQP与JMS AMQP Advanced Message Queuing Protocol ,是一套公开的消息队列协议，从协议层定义消息通信数据的标准格式，目的是解决MQ市场上消息协议不统一的问题 JMS Java Message Service 是一套消息服务的API标准，为所有的java应用程序提供统一的消息通信规范，类似于jdbc，只要遵循jms规范的java应用程序都可以进行通信。 J">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMQ">
+<meta property="og:url" content="https://www.iocyho.top/2019/07/07/blog19_RabbitMQ/index.html">
 <meta property="og:site_name" content="大西洲总督的的博客">
-<meta property="og:description" content="活在梦里的初级码农">
+<meta property="og:description" content="AMQP与JMS AMQP Advanced Message Queuing Protocol ,是一套公开的消息队列协议，从协议层定义消息通信数据的标准格式，目的是解决MQ市场上消息协议不统一的问题 JMS Java Message Service 是一套消息服务的API标准，为所有的java应用程序提供统一的消息通信规范，类似于jdbc，只要遵循jms规范的java应用程序都可以进行通信。 J">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/07/ZDeLB8.png">
+<meta property="og:updated_time" content="2019-07-07T13:45:13.209Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大西洲总督的的博客">
-<meta name="twitter:description" content="活在梦里的初级码农">
+<meta name="twitter:title" content="RabbitMQ">
+<meta name="twitter:description" content="AMQP与JMS AMQP Advanced Message Queuing Protocol ,是一套公开的消息队列协议，从协议层定义消息通信数据的标准格式，目的是解决MQ市场上消息协议不统一的问题 JMS Java Message Service 是一套消息服务的API标准，为所有的java应用程序提供统一的消息通信规范，类似于jdbc，只要遵循jms规范的java应用程序都可以进行通信。 J">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/07/ZDeLB8.png">
   
     <link rel="alternative" href="/atom.xml" title="大西洲总督的的博客" type="application/atom+xml">
   
@@ -153,295 +156,242 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-blog19_RabbitMQ" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RabbitMQ
+    </h1>
+  
+
+        
+        <a href="/2019/07/07/blog19_RabbitMQ/" class="archive-article-date">
+  	<time datetime="2019-07-07T13:41:26.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="AMQP与JMS"><a href="#AMQP与JMS" class="headerlink" title="AMQP与JMS"></a>AMQP与JMS</h4><ul>
+<li>AMQP Advanced Message Queuing Protocol ,是一套公开的消息队列协议，从协议层定义消息通信数据的标准格式，目的是解决MQ市场上消息协议不统一的问题</li>
+<li>JMS Java Message Service 是一套消息服务的API标准，为所有的java应用程序提供统一的消息通信规范，类似于jdbc，只要遵循jms规范的java应用程序都可以进行通信。</li>
+<li>JMS是在API层面定义标准，专属于java的；AMQP是在协议层定义标准的，可以跨语言。</li>
+</ul>
+<h4 id="RabbitMQ工作原理"><a href="#RabbitMQ工作原理" class="headerlink" title="RabbitMQ工作原理"></a>RabbitMQ工作原理</h4><ul>
+<li><img src="https://s2.ax1x.com/2019/07/07/ZDeLB8.png" alt="RabbitMQ工作原理"></li>
+<li>组成部分<ul>
+<li>Broker：消息队列服务进程，此进程包括两个部分：Exchange和Queue</li>
+<li>Exchange：消息队列交换机，按一定的规则将消息路由转发到某个队列，对消息进行过滤</li>
+<li>Queue：消息队列，存储消息的队列，消息到达队列并转发给指定的消费方</li>
+<li>Producer：消息生产者，即生产方客户端，生产方客户端将消息发送到MQ</li>
+<li>Consumer：消息消费者，即消费方客户端，接收MQ转发的消息</li>
+</ul>
+</li>
+<li>发布消息流程<ul>
+<li>生产者和Broker建立TCP连接</li>
+<li>生产者和Broker建立通道</li>
+<li>生产者通过通道消息发送给Broker，由Exchange将消息进行转发</li>
+<li>Exchange将消息转发到指定的Queue（队列）</li>
+</ul>
+</li>
+<li>接收消息流程<ul>
+<li>消费者和Broker建立TCP连接</li>
+<li>消费者和Broker建立通道</li>
+<li>消费者监听指定的Queue（队列）</li>
+<li>当有消息到达Queue时Broker默认将消息推送给消费者</li>
+<li>消费者接收到消息</li>
+</ul>
+</li>
+</ul>
+<h4 id="RabbitMQ工作模式"><a href="#RabbitMQ工作模式" class="headerlink" title="RabbitMQ工作模式"></a>RabbitMQ工作模式</h4><ol>
+<li>工作队列模式<ul>
+<li>多个消费者监听同一个队列，但一条消息不会被多个消费者消费，而是采用轮询的方式依次发给不同的消费者</li>
+</ul>
+</li>
+<li>发布订阅模式<ul>
+<li>一个生产者将消息发送给交换机</li>
+<li>交换机绑定多个队列，每个消费者监听自己的队列</li>
+<li>生产者将消息发送给交换机，交换机将消息转发到绑定此消息的每个队列，每个与此交换机绑定的队列都会收到消息</li>
+</ul>
+</li>
+<li>路由模式<ul>
+<li>每个消费者监听自己的队列，并设置routingkey</li>
+<li>生产者将消息发送给交换机，交换机根据routingkey来将消息发送给指定队列（队列的routingkey与生产者发送消息时指定的routingkey相等）</li>
+</ul>
+</li>
+<li>topic模式<ul>
+<li>每个消费者监听自己的队列，并设置带通配符的routingkey</li>
+<li>单词间以”.”分隔,符号*可以匹配一个词，符号#可以匹配多个词</li>
+<li>生产者将消息发送给交换机，交换机跟据routingkey来将消息发送给指定队列（队列的routingkey与生产者发送消息时指定的routingkey匹配）</li>
+</ul>
+</li>
+<li>header模式<ul>
+<li>不设置路由模式的routingkey，而是设置key/value形式的header来进行队列匹配（routingkey是一个值，header是一个map，貌似没有太大的区别）</li>
+</ul>
+</li>
+<li>rpc模式<ul>
+<li>使用MQ来实现的客户端远程调用服务端方法，基于Direct交换机实现（一个解决高并发问题的方案，让并发请求排队）</li>
+<li>客户端发送请求给MQ，MQ转发请求给服务端，服务接收请求后执行方法，方法执行完毕后发消息给MQ，MQ转发执行结果给客户端。</li>
+</ul>
+</li>
+</ol>
+<h4 id="RabbitMQ安装"><a href="#RabbitMQ安装" class="headerlink" title="RabbitMQ安装"></a>RabbitMQ安装</h4><ul>
+<li>安装RabbitMQ对应版本的Erlang运行环境</li>
+<li>安装RabbitMQ，启动RabbitMQ服务</li>
+<li>创建java工程,引入RabbitMQ的java客户端依赖</li>
+<li>注意事项：<ul>
+<li>计算机用户名不能为中文字符，否则RabbitMQ服务会无法启动。如果Rabbit已经在用户名为中午的情况下安装了RabbitMQ,即使把用户名改为英文，用户文件夹还是中文改不过来了。</li>
+<li>解决方法：<ul>
+<li>管理员运行cmd，打开RabbitMQ安装目录</li>
+<li>输入以下命令，路径可以设置成为自定义路径</li>
+<li>rabbitmq-service.bat remove (移除服务)</li>
+<li>set RABBITMQ_BASE=D:\install3\rabbitmq\rabbitmq_server-3.7.8\data (更改RabbitMQ默认日志和数据都存储路径)</li>
+<li>rabbitmq-service.bat install (重新安装服务)</li>
+<li>rabbitmq-plugins enable rabbitmq_management (激活插件管理)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="RabbitMQ使用"><a href="#RabbitMQ使用" class="headerlink" title="RabbitMQ使用"></a>RabbitMQ使用</h4><ul>
+<li>与SpringBoot整合<ul>
+<li>引入AMQP依赖</li>
+<li>定义配置类，将交换机bean加载进spring容器</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/03/blog9_《计算机是样跑起来的》读书笔记/" class="archive-article-date">
-  	<time datetime="2019-05-03T11:34:10.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/03/blog9_《计算机是样跑起来的》读书笔记/">《计算机是怎样跑起来的》读书笔记</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.iocyho.top/2019/07/07/blog19_RabbitMQ/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/blog8_maven笔记/" class="archive-article-date">
-  	<time datetime="2019-04-28T15:27:55.069Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/30/blog18_数据结构_集合/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">集合</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/blog8_maven笔记/">maven笔记</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/21/blog7_RPC框架原理/" class="archive-article-date">
-  	<time datetime="2019-04-21T14:55:47.738Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/21/blog7_RPC框架原理/">RPC框架</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/14/blog6_java打包/" class="archive-article-date">
-  	<time datetime="2019-04-14T13:31:41.647Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/14/blog6_java打包/">java打包</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/blog5_设计模式/" class="archive-article-date">
-  	<time datetime="2019-04-07T13:08:38.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/blog5_设计模式/">设计模式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/blog4_xml笔记/" class="archive-article-date">
-  	<time datetime="2019-04-07T02:35:37.597Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/blog4_xml笔记/">xml笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/31/blog3_webservice笔记/" class="archive-article-date">
-  	<time datetime="2019-03-30T18:03:02.412Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/31/blog3_webservice笔记/">Web services笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/27/blog2_使用Hexo搭建个人博客/" class="archive-article-date">
-  	<time datetime="2019-03-27T14:32:11.798Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/blog2_使用Hexo搭建个人博客/">通过Hexo搭建个人博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/27/blog1_开端/" class="archive-article-date">
-  	<time datetime="2019-03-26T16:46:18.280Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/blog1_开端/">开端</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/25/hello-world/" class="archive-article-date">
-  	<time datetime="2019-03-25T10:27:03.767Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -465,8 +415,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
