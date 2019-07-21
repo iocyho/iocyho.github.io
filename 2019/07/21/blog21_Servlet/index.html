@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.iocyho.top">
-  <title>Archives: 2019 | 大西洲总督的的博客</title>
+  <title>Servlet | 大西洲总督的的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="活在梦里的初级码农">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大西洲总督的的博客">
-<meta property="og:url" content="https://www.iocyho.top/archives/2019/index.html">
+  <meta name="description" content="什么是Servlet 运行在服务器端的小程序 Servlet是一个接口，定义了Java类被浏览器访问到(tomcat识别)的规则。  如何使用Servlet 创建JavaEE项目 定义一个类，实现Servlet接口,复写接口方法 public class ServletDemo implements Servlet   实现接口中的抽象方法 配置Servlet  在web.xml中配置： 1234">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet">
+<meta property="og:url" content="https://www.iocyho.top/2019/07/21/blog21_Servlet/index.html">
 <meta property="og:site_name" content="大西洲总督的的博客">
-<meta property="og:description" content="活在梦里的初级码农">
+<meta property="og:description" content="什么是Servlet 运行在服务器端的小程序 Servlet是一个接口，定义了Java类被浏览器访问到(tomcat识别)的规则。  如何使用Servlet 创建JavaEE项目 定义一个类，实现Servlet接口,复写接口方法 public class ServletDemo implements Servlet   实现接口中的抽象方法 配置Servlet  在web.xml中配置： 1234">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-21T14:26:22.976Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大西洲总督的的博客">
-<meta name="twitter:description" content="活在梦里的初级码农">
+<meta name="twitter:title" content="Servlet">
+<meta name="twitter:description" content="什么是Servlet 运行在服务器端的小程序 Servlet是一个接口，定义了Java类被浏览器访问到(tomcat识别)的规则。  如何使用Servlet 创建JavaEE项目 定义一个类，实现Servlet接口,复写接口方法 public class ServletDemo implements Servlet   实现接口中的抽象方法 配置Servlet  在web.xml中配置： 1234">
   
     <link rel="alternative" href="/atom.xml" title="大西洲总督的的博客" type="application/atom+xml">
   
@@ -153,295 +154,244 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-blog21_Servlet" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Servlet
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/21/blog21_Servlet/" class="archive-article-date">
+
+        
+        <a href="/2019/07/21/blog21_Servlet/" class="archive-article-date">
   	<time datetime="2019-07-21T14:26:45.817Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-21</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/21/blog21_Servlet/">Servlet</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="什么是Servlet"><a href="#什么是Servlet" class="headerlink" title="什么是Servlet"></a>什么是Servlet</h4><ul>
+<li>运行在服务器端的小程序</li>
+<li>Servlet是一个接口，定义了Java类被浏览器访问到(tomcat识别)的规则。</li>
+</ul>
+<h4 id="如何使用Servlet"><a href="#如何使用Servlet" class="headerlink" title="如何使用Servlet"></a>如何使用Servlet</h4><ol>
+<li>创建JavaEE项目</li>
+<li>定义一个类，实现Servlet接口,复写接口方法<ul>
+<li>public class ServletDemo implements Servlet</li>
+</ul>
+</li>
+<li>实现接口中的抽象方法</li>
+<li>配置Servlet<br>  在web.xml中配置： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置Servlet --&gt;</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;demo&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;com.test.servlet.ServletDemo&lt;/servlet-class&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line"></span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;demo&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/demo&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Servlet执行流程"><a href="#Servlet执行流程" class="headerlink" title="Servlet执行流程"></a>Servlet执行流程</h4><ol>
+<li>当服务器接受到客户端浏览器的请求后，会解析请求URL路径，获取访问的Servlet的资源路径(URI)</li>
+<li>查找web.xml文件，是否有对应的<url-pattern>标签体内容。</url-pattern></li>
+<li>如果有，则在找到对应的<servlet-class>全限定类名</servlet-class></li>
+<li>tomcat将字节码文件加载进内存(Class.forName())，并且创建其对象(class.newInstance())</li>
+<li>调用其方法(service())</li>
+</ol>
+<ul>
+<li>Servlet中的生命周期方法：<ol>
+<li>init: Servlet对象被创建时执行，只执行一次<ul>
+<li>Servlet什么时候被创建？<ul>
+<li>默认情况下，第一次被访问时，Servlet被创建</li>
+<li>可以配置执行Servlet的创建时机，在<servlet>标签下配置<ol>
+<li>第一次被访问时创建：<load-on-startup>的值为负数</load-on-startup></li>
+<li>在服务器启动时创建：<load-on-startup>的值为0或正整数</load-on-startup></li>
+</ol>
+</servlet></li>
+</ul>
+</li>
+<li>Servlet的init方法只执行一次，说明一个Servlet在内存中只存在一个对象，是单例的<ul>
+<li>多个用户同时访问时，可能存在线程安全问题。</li>
+<li>因此尽量不要在Servlet中定义成员变量。即使定义了成员变量，也不要对修改</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>service：提供服务时执行，执行多次<ul>
+<li>每次访问Servlet时，Service方法都会被调用一次。</li>
+</ul>
+</li>
+<li>destory：Servlet对象被销毁时执行，只执行一次<ul>
+<li>服务器关闭时，Servlet被销毁</li>
+<li>只有服务器正常关闭时，才会执行destroy方法</li>
+<li>destroy方法在Servlet被销毁之前执行，一般用于释放资源</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="Servlet3-0："><a href="#Servlet3-0：" class="headerlink" title="Servlet3.0："></a>Servlet3.0：</h4><ul>
+<li>支持注解配置，可以不需要配置web.xml</li>
+<li><p>使用步骤：</p>
+<ol>
+<li>创建JavaEE项目，选择Servlet的版本3.0以上，可以不创建web.xml</li>
+<li>定义一个类，实现Servlet接口</li>
+<li>复写方法</li>
+<li>在类上使用@WebServlet注解，进行配置 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@WebServlet(&quot;资源路径&quot;)</span><br><span class="line">@Target(&#123;ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">public @interface WebServlet &#123;</span><br><span class="line">	// 相当于&lt;Servlet-name&gt;</span><br><span class="line">    String name() default &quot;&quot;;</span><br><span class="line"></span><br><span class="line">	// 代表urlPatterns()属性配置</span><br><span class="line">    String[] value() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	// 相当于&lt;url-pattern&gt;</span><br><span class="line">    String[] urlPatterns() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	// 相当于&lt;load-on-startup&gt;</span><br><span class="line">    int loadOnStartup() default -1;</span><br><span class="line"></span><br><span class="line">    WebInitParam[] initParams() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    boolean asyncSupported() default false;</span><br><span class="line"></span><br><span class="line">    String smallIcon() default &quot;&quot;;</span><br><span class="line"></span><br><span class="line">    String largeIcon() default &quot;&quot;;</span><br><span class="line"></span><br><span class="line">    String description() default &quot;&quot;;</span><br><span class="line"></span><br><span class="line">    String displayName() default &quot;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>相关配置</p>
+<ol>
+<li>一个Servlet可以定义多个访问路径(urlpartten) ： @WebServlet({“/d4”,”/dd4”,”/ddd4”})</li>
+<li>路径定义规则：<ul>
+<li>/xxx：路径匹配</li>
+<li>/xxx/xxx:多层路径，目录结构</li>
+<li>*.do：扩展名匹配</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="Servlet的体系结构"><a href="#Servlet的体系结构" class="headerlink" title="Servlet的体系结构"></a>Servlet的体系结构</h4><ol>
+<li>Servlet – 接口</li>
+<li>GenericServlet – 抽象类<ul>
+<li>GenericServlet：将Servlet接口中其他的方法做了默认空实现，只将service()方法作为抽象</li>
+<li>定义Servlet类时，可以继承GenericServlet，实现service()方法即可</li>
+</ul>
+</li>
+<li>HttpServlet  – 抽象类<ul>
+<li>HttpServlet：对http协议的一种封装，简化操作</li>
+<li>定义类继承HttpServlet</li>
+<li>复写doGet/doPost方法</li>
+</ul>
+</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.iocyho.top/2019/07/21/blog21_Servlet/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/14/blog20_Linux定时任务删除指定时间前的文件/" class="archive-article-date">
-  	<time datetime="2019-07-14T15:57:47.263Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/14/blog20_Linux定时任务删除指定时间前的文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux定时任务删除指定时间前的文件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/14/blog20_Linux定时任务删除指定时间前的文件/">Linux定时任务删除指定时间前的文件</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/07/blog19_RabbitMQ/" class="archive-article-date">
-  	<time datetime="2019-07-07T13:41:26.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/07/blog19_RabbitMQ/">RabbitMQ</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/30/blog18_数据结构_集合/" class="archive-article-date">
-  	<time datetime="2019-06-30T13:48:00.716Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/30/blog18_数据结构_集合/">集合</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/23/blog17_分布式事务/" class="archive-article-date">
-  	<time datetime="2019-06-23T11:54:21.972Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/23/blog17_分布式事务/">分布式事务</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/16/blog16_java多线程/" class="archive-article-date">
-  	<time datetime="2019-06-16T13:03:04.563Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/16/blog16_java多线程/">Java多线程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/09/blog15_java类/" class="archive-article-date">
-  	<time datetime="2019-06-09T15:45:15.066Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/09/blog15_java类/">java类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/02/blog14_vim/" class="archive-article-date">
-  	<time datetime="2019-06-02T12:52:21.569Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/02/blog14_vim/">vim使用技巧</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/26/blog13_dubbo/" class="archive-article-date">
-  	<time datetime="2019-05-26T12:26:59.782Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/26/blog13_dubbo/">dubbo</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/19/blog12_Junit/" class="archive-article-date">
-  	<time datetime="2019-05-19T08:31:50.587Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/19/blog12_Junit/">Junit单元测试</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -465,8 +415,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
