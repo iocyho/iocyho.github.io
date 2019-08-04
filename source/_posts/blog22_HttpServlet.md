@@ -53,6 +53,45 @@ title: HttpServlet
 		* 封装POST请求消息的请求参数
 
 * HTTP响应消息数据格式
+	* 数据格式：
+		1. 响应行
+			* 组成：协议/版本 响应状态码 状态码描述
+			* 响应状态码：服务器告诉客户端浏览器本次请求和响应的一个状态。
+				1. 1xx：服务器就收客户端消息，但没有接受完成，等待一段时间后，发送1xx多状态码
+				2. 2xx：成功。代表：200
+				3. 3xx：重定向。代表：302(重定向)，304(访问缓存)
+				4. 4xx：客户端错误。
+					* 代表：
+						* 404（请求路径没有对应的资源） 
+						* 405：请求方式没有对应的doXxx方法
+				5. 5xx：服务器端错误。代表：500(服务器内部出现异常)				
+		2. 响应头：
+			* 格式：头名称： 值
+			* 常见的响应头：
+				1. Content-Type：服务器告诉客户端本次响应体数据格式以及编码格式
+				2. Content-disposition：服务器告诉客户端以什么格式打开响应体数据
+					* 值：
+						* in-line:默认值,在当前页面内打开
+						* attachment;filename=xxx：以附件形式打开响应体。文件下载
+		3. 响应空行
+		4. 响应体:传输的数据
+
+	* 响应字符串格式
+		```
+		HTTP/1.1 200 OK
+		Content-Type: text/html;charset=UTF-8
+		Content-Length: 101
+		Date: Wed, 06 Jun 2018 07:08:42 GMT
+
+		<html>
+		  <head>
+		    <title>$Title$</title>
+		  </head>
+		  <body>
+		  hello , response
+		  </body>
+		</html>
+		```
 
 * HTTP常用两种请求方法：
 	* GET：
@@ -63,9 +102,6 @@ title: HttpServlet
 		1. 请求参数在请求体中
 		2. 请求的url长度没有限制的
 		3. 相对安全
-
-
-
 
 #### Request：
 1. request对象和response对象原理
@@ -138,3 +174,116 @@ title: HttpServlet
 			3. void removeAttribute(String name):通过键移除键值对
 	* 获取ServletContext：
 		* ServletContext getServletContext()
+
+#### Response对象
+* 功能：设置响应消息
+	1. 设置响应行
+		1. 格式：HTTP/1.1 200 ok
+		2. 设置状态码：setStatus(int sc) 
+	2. 设置响应头：setHeader(String name, String value) 
+		
+	3. 设置响应体：
+		* 使用步骤：
+			1. 获取输出流
+				* 字符输出流：PrintWriter getWriter()
+
+				* 字节输出流：ServletOutputStream getOutputStream()
+			2. 使用输出流，将数据输出到客户端浏览器
+
+* 重定向：资源跳转的方式
+	* 实现方法：
+		1. 通过设置响应状态和响应头实现
+		```
+		//1. 设置状态码为302
+        response.setStatus(302);
+        //2.设置响应头location
+        response.setHeader("location","/day15/responseDemo2");
+		```
+		2. 通过response对象封装的方法实现
+		```
+        //简单的重定向方法
+        response.sendRedirect("/day15/responseDemo2");
+		```
+	* forward 和  redirect 区别
+		* 重定向的特点:redirect
+			1. 地址栏发生变化
+			2. 重定向可以访问其他站点(服务器)的资源
+			3. 重定向是两次请求。不能使用request对象来共享数据
+		* 转发的特点：forward
+			1. 转发地址栏路径不变
+			2. 转发只能访问当前服务器下的资源
+			3. 转发是一次请求，可以使用request对象来共享数据
+		
+* 路径写法：
+	1. 相对路径：通过相对路径不可以确定唯一资源
+		* 不以/开头，以.开头路径
+		* 如：./index.html
+		* ./可省略，直接写成 index.html也表示相对路径
+		* 使用规则：找到当前资源和目标资源之间的相对位置关系
+			* ./：当前目录
+			* ../:后退一级目录
+	2. 绝对路径：通过绝对路径可以确定唯一资源
+		* 如：http://localhost/demo/responseDemo2
+		* 前面的协议名称、ip、端口号等可省略，变成 /demo/responseDemo2
+		* 以/开头的路径
+		* 使用规则：判断定义的路径是给谁用的？判断请求将来从哪儿发出
+			* 给客户端浏览器使用：需要加虚拟目录(项目的访问路径)
+				* 虚拟目录动态获取：request.getContextPath()
+			* 给服务器使用：不需要加虚拟目录
+				* 转发路径
+													
+* 服务器输出数据到浏览器
+	1. 服务器输出字符数据到浏览器
+		* 步骤：
+			1. 获取字符输出流
+			2. 输出数据
+		* 乱码问题：
+			1. PrintWriter pw = response.getWriter();获取的流的默认编码是ISO-8859-1
+			2. 设置该流的默认编码
+			3. 告诉浏览器响应体使用的编码
+			```
+			//简单的形式，设置编码，是在获取流之前设置
+			response.setContentType("text/html;charset=utf-8");
+			```
+	2. 服务器输出字节数据到浏览器
+		* 步骤：
+			1. 获取字节输出流
+			2. 输出数据
+
+#### ServletContext对象：
+* 概念：代表整个web应用，可以和程序的容器(服务器)来通信
+* 获取ServletContext对象：
+	1. 通过request对象获取
+		request.getServletContext();
+	2. 通过HttpServlet获取
+		this.getServletContext();
+* ServletContext对象功能：
+	1. 获取MIME类型：
+		* MIME类型:在互联网通信过程中定义的一种文件数据类型
+			* 格式： 大类型/小类型   text/html		image/jpeg
+		* 方法：
+			```
+			String getMimeType(String file)
+			```
+	2. 域对象：共享数据
+		* ServletContext对象范围：所有用户所有请求的数据
+		* 方法：
+			```
+			setAttribute(String name,Object value)
+			getAttribute(String name)
+			removeAttribute(String name)
+			```
+
+	3. 获取文件的真实(服务器)路径
+		* 方法：String getRealPath(String path)
+			```
+			//web目录下资源访问
+			String b = context.getRealPath("/b.txt");
+	    		System.out.println(b);
+			//WEB-INF目录下的资源访问
+	        String c = context.getRealPath("/WEB-INF/c.txt");
+	        System.out.println(c);
+			//src目录下的资源访问
+	        String a = context.getRealPath("/WEB-INF/classes/a.txt");
+	        System.out.println(a);
+			```
