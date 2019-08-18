@@ -52,7 +52,7 @@ title: jsp
 		6. config				ServletConfig			Servlet的配置对象
 		7. exception			Throwable					异常对象
 
-## EL表达式
+### EL表达式
 * 什么是EL表达式：
 	* Expression Language 表达式语言
 * EL表达式作用：
@@ -96,7 +96,7 @@ title: jsp
 			* 获取jsp其他八个内置对象
 				* ${pageContext.request.contextPath}：动态获取虚拟目录
 
-## JSTL
+### JSTL
 * 什么是JSTL：
 	* JavaServer Pages Tag Library  JSP标准标签库
 	* 由Apache组织提供的开源的免费的jsp标签
