@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.iocyho.top">
-  <title>jsp | 大西洲总督的的博客</title>
+  <title>大西洲总督的的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jsp 什么是jsp：Java Server Pages： java服务器端页面 个特殊的页面，其中既可以指定定义html标签，又可以定义java代码，出现的初衷是用于简化书写   jsp原理 在程序运行过程中，由web容器在work目录下生成一个对应的xx_jsp.java类，该类继承了HttpJspBase HttpJspBase继承HttpServlet，因此JSP本质上就是一个Servle">
+  <meta name="description" content="MVC：开发模式 什么是MVC： M：Model，模型 → JavaBean 完成具体的业务操作，如：查询数据库，封装对象   V：View，视图。JSP 展示数据   C：Controller，控制器 → Servlet 获取用户的输入 调用模型 将数据交给视图进行展示     MVC作用： 降低组件耦合性低，方便维护，可以利于分工协作 提高代码重用性    三层架构：软件设计架构 界面层(表示">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jsp">
-<meta property="og:url" content="https://www.iocyho.top/2019/08/11/blog24_jsp/index.html">
+<meta property="og:title" content="大西洲总督的的博客">
+<meta property="og:url" content="https://www.iocyho.top/2019/08/18/blog25_MVC与三层架构/index.html">
 <meta property="og:site_name" content="大西洲总督的的博客">
-<meta property="og:description" content="jsp 什么是jsp：Java Server Pages： java服务器端页面 个特殊的页面，其中既可以指定定义html标签，又可以定义java代码，出现的初衷是用于简化书写   jsp原理 在程序运行过程中，由web容器在work目录下生成一个对应的xx_jsp.java类，该类继承了HttpJspBase HttpJspBase继承HttpServlet，因此JSP本质上就是一个Servle">
+<meta property="og:description" content="MVC：开发模式 什么是MVC： M：Model，模型 → JavaBean 完成具体的业务操作，如：查询数据库，封装对象   V：View，视图。JSP 展示数据   C：Controller，控制器 → Servlet 获取用户的输入 调用模型 将数据交给视图进行展示     MVC作用： 降低组件耦合性低，方便维护，可以利于分工协作 提高代码重用性    三层架构：软件设计架构 界面层(表示">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-18T14:46:58.702Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/18/mlEfvq.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/18/mlE2Cj.jpg">
+<meta property="og:updated_time" content="2019-08-18T14:52:22.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jsp">
-<meta name="twitter:description" content="jsp 什么是jsp：Java Server Pages： java服务器端页面 个特殊的页面，其中既可以指定定义html标签，又可以定义java代码，出现的初衷是用于简化书写   jsp原理 在程序运行过程中，由web容器在work目录下生成一个对应的xx_jsp.java类，该类继承了HttpJspBase HttpJspBase继承HttpServlet，因此JSP本质上就是一个Servle">
+<meta name="twitter:title" content="大西洲总督的的博客">
+<meta name="twitter:description" content="MVC：开发模式 什么是MVC： M：Model，模型 → JavaBean 完成具体的业务操作，如：查询数据库，封装对象   V：View，视图。JSP 展示数据   C：Controller，控制器 → Servlet 获取用户的输入 调用模型 将数据交给视图进行展示     MVC作用： 降低组件耦合性低，方便维护，可以利于分工协作 提高代码重用性    三层架构：软件设计架构 界面层(表示">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/08/18/mlEfvq.jpg">
   
     <link rel="alternative" href="/atom.xml" title="大西洲总督的的博客" type="application/atom+xml">
   
@@ -154,255 +157,39 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-blog24_jsp" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-blog25_MVC与三层架构" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      jsp
-    </h1>
-  
-
-        
-        <a href="/2019/08/11/blog24_jsp/" class="archive-article-date">
-  	<time datetime="2019-08-11T13:50:12.855Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h3><ul>
-<li>什么是jsp：Java Server Pages： java服务器端页面<ul>
-<li>个特殊的页面，其中既可以指定定义html标签，又可以定义java代码，出现的初衷是用于简化书写</li>
+        <h3 id="MVC：开发模式"><a href="#MVC：开发模式" class="headerlink" title="MVC：开发模式"></a>MVC：开发模式</h3><ul>
+<li>什么是MVC：<ol>
+<li>M：Model，模型 → JavaBean<ul>
+<li>完成具体的业务操作，如：查询数据库，封装对象</li>
 </ul>
 </li>
-<li>jsp原理<ul>
-<li>在程序运行过程中，由web容器在work目录下生成一个对应的xx_jsp.java类，该类继承了HttpJspBase</li>
-<li>HttpJspBase继承HttpServlet，因此JSP本质上就是一个Servlet</li>
+<li>V：View，视图。JSP<ul>
+<li>展示数据</li>
 </ul>
 </li>
-<li>jsp的脚本：JSP定义Java代码的方式<ol>
-<li>&lt;%  代码 %&gt;：定义的java代码，在service方法中。service方法中可以定义什么，该脚本中就可以定义什么。</li>
-<li>&lt;%! 代码 %&gt;：定义的java代码，在jsp转换后的java类的成员位置。</li>
-<li>&lt;%= 代码 %&gt;：定义的java代码，会输出到页面上。输出语句中可以定义什么，该脚本中就可以定义什么。</li>
-</ol>
-</li>
-<li>jsp指令<ul>
-<li>作用：用于配置JSP页面，导入资源文件</li>
-<li>格式：<br>  &lt;%@ 指令名称 属性名1=属性值1 属性名2=属性值2 … %&gt;</li>
-<li>分类：<ol>
-<li>page : 配置JSP页面<ul>
-<li>contentType：等同于response.setContentType()<ol>
-<li>设置响应体的mime类型以及字符集</li>
-<li>设置当前jsp页面的编码（只能是高级的IDE才能生效，如果使用低级工具，则需要设置pageEncoding属性设置当前页面的字符集）</li>
-</ol>
-</li>
-<li>import：导包</li>
-<li>errorPage：当前页面发生异常后，会自动跳转到指定的错误页面</li>
-<li>isErrorPage：标识当前也是是否是错误页面。<ul>
-<li>true：是，可以使用内置对象exception</li>
-<li>false：否。默认值。不可以使用内置对象exception</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>include ：页面嵌套。导入页面的资源文件<ul>
-<li>&lt;%@include file=”top.jsp”%&gt;</li>
-</ul>
-</li>
-<li>taglib ：导入资源<ul>
-<li>&lt;%@ taglib prefix=”c” uri=”<a href="http://java.sun.com/jsp/jstl/core&quot;" target="_blank" rel="noopener">http://java.sun.com/jsp/jstl/core&quot;</a> %&gt;<ul>
-<li>prefix：前缀，可以自定义</li>
-</ul>
-</li>
+<li>C：Controller，控制器 → Servlet<ul>
+<li>获取用户的输入</li>
+<li>调用模型</li>
+<li>将数据交给视图进行展示</li>
 </ul>
 </li>
 </ol>
 </li>
-</ul>
-</li>
-<li>jsp注释:<ol>
-<li>html注释： <xmp><!-- -->: 只能注释html代码片段</xmp></li>
-<li>jsp注释：推荐使用<br> &lt;%– –%&gt;：可以注释所有</li>
-</ol>
-</li>
-<li>JSP的内置对象：<ul>
-<li>在jsp页面中不需要获取和创建，可以直接使用的对象</li>
-<li>jsp的9个内置对象:<ol>
-<li>pageContext        PageContext                    当前页面共享数据，还可以获取其他八个内置对象</li>
-<li>request            HttpServletRequest            一次请求访问的多个资源(转发)</li>
-<li>session            HttpSession                    一次会话的多个请求间</li>
-<li>application        ServletContext                所有用户间共享数据</li>
-<li>response            HttpServletResponse            响应对象</li>
-<li>page                Object                        当前页面(Servlet)的对象  this</li>
-<li>out                JspWriter                    输出对象，数据输出到页面上<ul>
-<li>response.getWriter()和out.write()的区别：</li>
-<li>在tomcat服务器真正给客户端做出响应之前，会先找response缓冲区数据，再找out缓冲区数据。</li>
-<li>response.getWriter()数据输出永远在out.write()之前</li>
-</ul>
-</li>
-<li>config                ServletConfig            Servlet的配置对象</li>
-<li>exception            Throwable                    异常对象</li>
+<li>MVC作用：<ol>
+<li>降低组件耦合性低，方便维护，可以利于分工协作</li>
+<li>提高代码重用性<br><img src="https://s2.ax1x.com/2019/08/18/mlEfvq.jpg" alt="MVC开发模式"></li>
 </ol>
 </li>
 </ul>
-</li>
-</ul>
-<h3 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h3><ul>
-<li>什么是EL表达式：<ul>
-<li>Expression Language 表达式语言</li>
-</ul>
-</li>
-<li>EL表达式作用：<ul>
-<li>替换和简化jsp页面中java代码的编写</li>
-</ul>
-</li>
-<li>EL表达式语法：<ul>
-<li>${表达式}</li>
-<li>注意事项：jsp默认支持el表达式。如果要忽略el表达式<ol>
-<li>设置jsp中page指令中：isELIgnored=”true” 忽略当前jsp页面中所有的el表达式</li>
-<li>\${表达式} ：忽略当前这个el表达式</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>EL表达式语法：<ol>
-<li>运算：<ol>
-<li>算数运算符： + - * /(div) %(mod)</li>
-<li>比较运算符： &gt; &lt; &gt;= &lt;= == !=</li>
-<li>逻辑运算符： &amp;&amp;(and) ||(or) !(not)</li>
-<li>空运算符： empty<ul>
-<li>功能：用于判断字符串、集合、数组对象是否为null或者长度是否为0</li>
-<li>${empty list}:判断字符串、集合、数组对象是否为null或者长度为0</li>
-<li>${not empty str}:表示判断字符串、集合、数组对象是否不为null 并且 长度&gt;0</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>获取值<ol>
-<li>el表达式只能从域对象中获取值</li>
-<li>语法：<ol>
-<li>${域名称.键名}：从指定域中获取指定键的值<ul>
-<li>域名称：<ol>
-<li>pageScope        –&gt; pageContext</li>
-<li>requestScope     –&gt; request</li>
-<li>sessionScope     –&gt; session</li>
-<li>applicationScope –&gt; application（ServletContext）</li>
-</ol>
-</li>
-<li>举例：在request域中存储了name=张三</li>
-<li>获取：${requestScope.name}</li>
-</ul>
-</li>
-<li><font color="red">${键名}：表示依次从最小的域中查找是否有该键对应的值，直到找到为止。</font></li>
-<li>获取对象、List集合、Map集合的值<ol>
-<li>对象：${域名称.键名.属性名}<ul>
-<li>本质上会去调用对象的getter方法</li>
-</ul>
-</li>
-<li>List集合：${域名称.键名[索引]}</li>
-<li>Map集合：<ul>
-<li>${域名称.键名.key名称}</li>
-<li>${域名称.键名[“key名称”]}</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>隐式对象：<ul>
-<li>el表达式中有11个隐式对象</li>
-<li>pageContext：<ul>
-<li>获取jsp其他八个内置对象<ul>
-<li>${pageContext.request.contextPath}：动态获取虚拟目录</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h3><ul>
-<li>什么是JSTL：<ul>
-<li>JavaServer Pages Tag Library  JSP标准标签库</li>
-<li>由Apache组织提供的开源的免费的jsp标签</li>
-</ul>
-</li>
-<li>JSTL的作用：<ul>
-<li>把jsp页面上的java代码替换成标签</li>
-<li>简化jsp页面</li>
-</ul>
-</li>
-<li>JSTL使用步骤：<ol>
-<li>导入jstl相关jar包</li>
-<li>引入标签库：taglib指令：  &lt;%@ taglib %&gt;</li>
-<li>使用标签</li>
-</ol>
-</li>
-<li><p>常用的JSTL标签</p>
-<ol>
-<li>if:相当于java代码的if语句<ol>
-<li>属性：<ul>
-<li>test 必须属性，接受boolean表达式<ul>
-<li>如果表达式为true，则显示if标签体内容，如果为false，则不显示标签体内容</li>
-<li>一般情况下，test属性值会结合el表达式一起使用</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>注意：<ul>
-<li>c:if标签没有else情况，想要else情况，则可以再定义一个c:if标签</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>choose:相当于java代码的switch语句<ol>
-<li>使用choose标签声明                     相当于switch声明</li>
-<li>使用when标签做判断                     相当于case</li>
-<li>使用otherwise标签做其他情况的声明        相当于default</li>
-</ol>
-</li>
-<li><p>foreach:相当于java代码的for语句</p>
-<ol>
-<li><p>完成重复的操作</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach begin=&quot;1&quot; end=&quot;10&quot; var=&quot;i&quot; step=&quot;2&quot; varStatus=&quot;s&quot;&gt;</span><br><span class="line"> 			$&#123;i&#125; &lt;h3&gt;$&#123;s.index&#125;&lt;h3&gt; &lt;h4&gt; $&#123;s.count&#125; &lt;/h4&gt;&lt;br&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>begin：开始值</li>
-<li>end：结束值</li>
-<li>var：临时变量</li>
-<li>step：步长</li>
-<li>varStatus:循环状态对象<ul>
-<li>index:容器中元素的索引，从0开始</li>
-<li>count:循环次数，从1开始</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>遍历容器</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach items=&quot;$&#123;list&#125;&quot; var=&quot;str&quot; varStatus=&quot;s&quot;&gt;</span><br><span class="line">  $&#123;s.index&#125; $&#123;s.count&#125; $&#123;str&#125;&lt;br&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>items:容器对象</li>
-<li>var:容器中元素的临时变量</li>
-<li>varStatus:循环状态对象<ul>
-<li>index:容器中元素的索引，从0开始</li>
-<li>count:循环次数，从1开始</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-</li>
+<h3 id="三层架构：软件设计架构"><a href="#三层架构：软件设计架构" class="headerlink" title="三层架构：软件设计架构"></a>三层架构：软件设计架构</h3><ul>
+<li>界面层(表示层)：用户看的得界面。用户可以通过界面上的组件和服务器进行交互</li>
+<li>业务逻辑层：处理业务逻辑的。</li>
+<li>数据访问层：操作数据存储文件。<br><img src="https://s2.ax1x.com/2019/08/18/mlE2Cj.jpg" alt="三层架构"></li>
 </ul>
 
       
@@ -483,7 +270,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://www.iocyho.top/2019/08/11/blog24_jsp/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.iocyho.top/2019/08/18/blog25_MVC与三层架构/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -497,18 +284,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/18/blog25_MVC与三层架构/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/04/blog23_Cookie&Session/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Cookie&amp;Session</div>
+    <a href="/2019/08/11/blog24_jsp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jsp</div>
       <i class="icon-circle-right"></i>
     </a>
   
