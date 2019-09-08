@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.iocyho.top">
-  <title>Archives | 大西洲总督的的博客</title>
+  <title>FastDFS | 大西洲总督的的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="活在梦里的初级码农">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大西洲总督的的博客">
-<meta property="og:url" content="https://www.iocyho.top/archives/page/3/index.html">
+  <meta name="description" content="分布式文件管理系统 作用： 通过网络将单机上的文件系统组成一个网络文件系统。 可以快速扩容存储，提高文件访问速度。 主要应用在大型互联网项目中，实现图片存储、音视频存储等服务。   服务端 主：元信息(文件名称、大小、分块信息等) 从：文件分块   客户端 查询: 从主服务器获取文件元信息，通过元信息操作从服务器，进而获取文件 修改：更新主服务器的元信息，由服务端自动实现对文件的分块存储通用分布式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FastDFS">
+<meta property="og:url" content="https://www.iocyho.top/2019/09/05/blog27_FastDFS/index.html">
 <meta property="og:site_name" content="大西洲总督的的博客">
-<meta property="og:description" content="活在梦里的初级码农">
+<meta property="og:description" content="分布式文件管理系统 作用： 通过网络将单机上的文件系统组成一个网络文件系统。 可以快速扩容存储，提高文件访问速度。 主要应用在大型互联网项目中，实现图片存储、音视频存储等服务。   服务端 主：元信息(文件名称、大小、分块信息等) 从：文件分块   客户端 查询: 从主服务器获取文件元信息，通过元信息操作从服务器，进而获取文件 修改：更新主服务器的元信息，由服务端自动实现对文件的分块存储通用分布式">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/08/nGGKYt.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/08/nGGYwj.jpg">
+<meta property="og:updated_time" content="2019-09-08T12:54:11.095Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大西洲总督的的博客">
-<meta name="twitter:description" content="活在梦里的初级码农">
+<meta name="twitter:title" content="FastDFS">
+<meta name="twitter:description" content="分布式文件管理系统 作用： 通过网络将单机上的文件系统组成一个网络文件系统。 可以快速扩容存储，提高文件访问速度。 主要应用在大型互联网项目中，实现图片存储、音视频存储等服务。   服务端 主：元信息(文件名称、大小、分块信息等) 从：文件分块   客户端 查询: 从主服务器获取文件元信息，通过元信息操作从服务器，进而获取文件 修改：更新主服务器的元信息，由服务端自动实现对文件的分块存储通用分布式">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/08/nGGKYt.jpg">
   
     <link rel="alternative" href="/atom.xml" title="大西洲总督的的博客" type="application/atom+xml">
   
@@ -153,268 +157,233 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-blog27_FastDFS" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      FastDFS
+    </h1>
+  
+
+        
+        <a href="/2019/09/05/blog27_FastDFS/" class="archive-article-date">
+  	<time datetime="2019-09-05T02:28:11.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="分布式文件管理系统"><a href="#分布式文件管理系统" class="headerlink" title="分布式文件管理系统"></a>分布式文件管理系统</h3><ul>
+<li>作用：<ul>
+<li>通过网络将单机上的文件系统组成一个网络文件系统。</li>
+<li>可以快速扩容存储，提高文件访问速度。</li>
+<li>主要应用在大型互联网项目中，实现图片存储、音视频存储等服务。</li>
+</ul>
+</li>
+<li>服务端<ul>
+<li>主：元信息(文件名称、大小、分块信息等)</li>
+<li>从：文件分块</li>
+</ul>
+</li>
+<li>客户端<ul>
+<li>查询: 从主服务器获取文件元信息，通过元信息操作从服务器，进而获取文件</li>
+<li>修改：更新主服务器的元信息，由服务端自动实现对文件的分块存储<br>通用分布式文件管理系统：</li>
+<li>NFS、GFS、HDFSC<br>分布式文件服务提供商(Object Storage Service) OSS：</li>
+<li>阿里云、七牛云</li>
+</ul>
+</li>
+</ul>
+<h3 id="专用分布式文件管理系统-–-FastDFS"><a href="#专用分布式文件管理系统-–-FastDFS" class="headerlink" title="专用分布式文件管理系统 – FastDFS"></a>专用分布式文件管理系统 – FastDFS</h3><ul>
+<li>使用场景：多用于存储小文件，存储不分块，减少文件拆分、合并造成的额外开销</li>
+<li><p>角色：</p>
+<ul>
+<li><p>Tracker server  </p>
+<ul>
+<li>可以将tracker称为追踪服务器或调度服务器。</li>
+<li>负责负载均衡和调度，通过Tracker server在文件上传时可以根据一些策略找到Storage server提供文件上传服务。</li>
+<li>存在多个Tracker server组件集群时，各个服务实例平等对外提供服务，客户端采用轮询的方式调用集群中的服务实例。</li>
+<li>客户端请求Tracker服务时，不是由tracker直接操作storage完成文件的上传。</li>
+<li>而是由tracker告诉客户端一个可用的storage服务的ip和端口，由客户端自己请求storage服务，完成对文件的操作</li>
+<li>客户端操作storage服务完成文件上传后，storage向客户端响应file_id，该file_id用于以后访问该文件(文件id即路径(组名/虚拟磁盘路径/数据两级目录/文件名))</li>
+</ul>
+</li>
+<li><p>Storage server</p>
+<ul>
+<li>作用是文件存储，客户端上传的文件最终存储在Storage服务器上，Storage server没有实现自己的文件系统，而是使用操作系统的文件系统来管理文件。</li>
+<li>storage集群由一个或多个组构成，一个组由一台或多台存储服务器组成，集群存储总容量为集群中所有组的存储容量之和。</li>
+<li>组内的Storage server之间是平等关系，不同组的Storage server之间不会相互通信，</li>
+<li>同组内的Storage server之间会相互连接进行文件同步，从而保证同组内每个storage上的文件完全一致的。</li>
+<li>一个组的存储容量为该组内的存储服务器容量最小的那个，因此组内存储服务器的软硬件配置最好一致。    <ul>
+<li>用分组存储方式的好处是灵活、可控性较强。</li>
+<li>上传文件时，可以由客户端直接指定上传到的组也可以由tracker进行调度选择。</li>
+<li>一个分组的存储服务器访问压力较大时，可以在该组增加存储服务器来扩充服务能力（纵向扩容）。</li>
+<li>当系统容量不足时，可以增加组来扩充存储容量（横向扩容）        </li>
+</ul>
+</li>
+<li>Storage server会连接集群中所有的Tracker server，定时报告自己的状态，包括磁盘剩余空间、文件同步状况、文件上传下载次数等统计信息。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>文件上传流程<br><img src="https://s2.ax1x.com/2019/09/08/nGGKYt.jpg" alt="文件上传流程"></li>
+<li>文件下载流程<br><img src="https://s2.ax1x.com/2019/09/08/nGGYwj.jpg" alt="文件下载流程"></li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>Tracker安装<ul>
+<li>施工中…</li>
+</ul>
+</li>
+<li>Storage安装<ul>
+<li>施工中…</li>
+</ul>
+</li>
+<li>FastDFS-Nginx-module：<ul>
+<li>在storage server上安装nginx的目的是对外通过http访问storage server上的文件。</li>
+<li>使用nginx的模块FastDFS-nginx-module的作用是通过http方式访问storage中的文件，当storage本机没有要找的文件时向源storage主机代理请求文件</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/blog8_maven笔记/" class="archive-article-date">
-  	<time datetime="2019-04-28T15:27:55.069Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/blog8_maven笔记/">maven笔记</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.iocyho.top/2019/09/05/blog27_FastDFS/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/21/blog7_RPC框架原理/" class="archive-article-date">
-  	<time datetime="2019-04-21T14:55:47.738Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/09/05/blog28_ElasticSearch/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ElasticSearch
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/25/blog26_Filter&Listener/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/21/blog7_RPC框架原理/">RPC框架</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/14/blog6_java打包/" class="archive-article-date">
-  	<time datetime="2019-04-14T13:31:41.647Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/14/blog6_java打包/">java打包</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/blog5_设计模式/" class="archive-article-date">
-  	<time datetime="2019-04-07T13:08:38.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/blog5_设计模式/">设计模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/blog4_xml笔记/" class="archive-article-date">
-  	<time datetime="2019-04-07T02:35:37.597Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/blog4_xml笔记/">xml笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/31/blog3_webservice笔记/" class="archive-article-date">
-  	<time datetime="2019-03-30T18:03:02.412Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/31/blog3_webservice笔记/">Web services笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/27/blog2_使用Hexo搭建个人博客/" class="archive-article-date">
-  	<time datetime="2019-03-27T14:32:11.798Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/blog2_使用Hexo搭建个人博客/">通过Hexo搭建个人博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/27/blog1_开端/" class="archive-article-date">
-  	<time datetime="2019-03-26T16:46:18.280Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/blog1_开端/">开端</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/25/hello-world/" class="archive-article-date">
-  	<time datetime="2019-03-25T10:27:03.767Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -438,8 +407,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

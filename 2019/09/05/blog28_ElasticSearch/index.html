@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.iocyho.top">
-  <title>Archives | 大西洲总督的的博客</title>
+  <title>ElasticSearch | 大西洲总督的的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="活在梦里的初级码农">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大西洲总督的的博客">
-<meta property="og:url" content="https://www.iocyho.top/archives/page/3/index.html">
+  <meta name="description" content="说明 基于lucene的搜索引擎，可以实现全文检索和及时搜索 优势： 基于RESTFUL web的接口 分布式、高可扩展性   逻辑结构：倒排索引表 将要搜索的文档内容分词，所有不重复的词组成分词列表。 将搜索的文档最终以Document方式存储起来。 每个词和docment都有关联。   根据分词查询对应的文档，查询到多个文档时，根据一定的算法(如：相似性算法，仅计算匹配词条的数量)选择最优的一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch">
+<meta property="og:url" content="https://www.iocyho.top/2019/09/05/blog28_ElasticSearch/index.html">
 <meta property="og:site_name" content="大西洲总督的的博客">
-<meta property="og:description" content="活在梦里的初级码农">
+<meta property="og:description" content="说明 基于lucene的搜索引擎，可以实现全文检索和及时搜索 优势： 基于RESTFUL web的接口 分布式、高可扩展性   逻辑结构：倒排索引表 将要搜索的文档内容分词，所有不重复的词组成分词列表。 将搜索的文档最终以Document方式存储起来。 每个词和docment都有关联。   根据分词查询对应的文档，查询到多个文档时，根据一定的算法(如：相似性算法，仅计算匹配词条的数量)选择最优的一">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-08T12:10:27.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大西洲总督的的博客">
-<meta name="twitter:description" content="活在梦里的初级码农">
+<meta name="twitter:title" content="ElasticSearch">
+<meta name="twitter:description" content="说明 基于lucene的搜索引擎，可以实现全文检索和及时搜索 优势： 基于RESTFUL web的接口 分布式、高可扩展性   逻辑结构：倒排索引表 将要搜索的文档内容分词，所有不重复的词组成分词列表。 将搜索的文档最终以Document方式存储起来。 每个词和docment都有关联。   根据分词查询对应的文档，查询到多个文档时，根据一定的算法(如：相似性算法，仅计算匹配词条的数量)选择最优的一">
   
     <link rel="alternative" href="/atom.xml" title="大西洲总督的的博客" type="application/atom+xml">
   
@@ -153,268 +154,339 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-blog28_ElasticSearch" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ElasticSearch
+    </h1>
+  
+
+        
+        <a href="/2019/09/05/blog28_ElasticSearch/" class="archive-article-date">
+  	<time datetime="2019-09-05T02:28:37.284Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
+<li>基于lucene的搜索引擎，可以实现全文检索和及时搜索</li>
+<li>优势：<ul>
+<li>基于RESTFUL web的接口</li>
+<li>分布式、高可扩展性</li>
+</ul>
+</li>
+<li>逻辑结构：倒排索引表<ol>
+<li>将要搜索的文档内容分词，所有不重复的词组成分词列表。</li>
+<li>将搜索的文档最终以Document方式存储起来。</li>
+<li>每个词和docment都有关联。</li>
+</ol>
+<ul>
+<li>根据分词查询对应的文档，查询到多个文档时，根据一定的算法(如：相似性算法，仅计算匹配词条的数量)选择最优的一个</li>
+</ul>
+</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>ElasticSearch 服务<ul>
+<li>下载 <a href="https://www.elastic.co/downloads/past-releases" target="_blank" rel="noopener">https://www.elastic.co/downloads/past-releases</a></li>
+<li>解压</li>
+<li>修改配置文件 /</li>
+</ul>
+</li>
+<li>ElasticSearch-head 可视化插件(基于node.js)<ul>
+<li>git clone git://github.com/mobz/elasticsearch-head.git</li>
+<li>npm install</li>
+<li>npm run start</li>
+</ul>
+</li>
+</ul>
+<h4 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h4><ul>
+<li>集群说明<ol>
+<li>结点<ul>
+<li>ES集群由多个服务器组成，每个服务器即为一个Node结点(该服务只部署了一个ES进程)。</li>
+</ul>
+</li>
+<li>分片<ul>
+<li>当文档量很大时，由于内存和硬盘的限制，同时也为了提高ES的处理能力、容错能力及高可用能力，将索引分成若干分片(每个分片都是一个lucene实例)</li>
+<li>每个分片可以放在不同的服务器，实现多个服务器共同对外提供索引及搜索服务</li>
+<li>当一个搜索请求过来，会分别从各各分片去查询，最后将查询到的数据合并返回给用户</li>
+</ul>
+</li>
+<li>副本<ul>
+<li>为了提高ES的高可用同时也为了提高搜索的吞吐量，将分片复制一份或多份存储在其它的服务器，<br>即使当前的服务器宕机，拥有副本的服务器照常可以提供服务。</li>
+</ul>
+</li>
+<li>主结点<ul>
+<li>一个集群中会有一个或多个主结点，主结点的作用是集群管理，比如增加节点，移除节点等，主结点挂掉后ES会重新选一个主结点。</li>
+</ul>
+</li>
+<li>结点转发<ul>
+<li>每个结点都知道其它结点的信息，因此可以对任意一个结点发起请求，接收到请求的结点会转发给其它结点查询数据。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>节点角色<ol>
+<li>主节点 master<ul>
+<li>用于集群的管理及索引，比如新增结点、分片分配、索引的新增和删除等</li>
+</ul>
+</li>
+<li>数据节点 data<ul>
+<li>保存了数据分片，负责索引和搜索操作</li>
+</ul>
+</li>
+<li>客户端节点 client<ul>
+<li>仅作为请求客户端存在，client也作为负载均衡器，client节点不存数据，只是将请求均衡转发到其它结点</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li><p>索引管理</p>
+<ul>
+<li>每个索引包含term(分词)和document(文档)</li>
+<li>对索引进行CRUD操作(通过发送HTTP请求实现)<ul>
+<li>创建索引<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">put http://el的ip:端口/索引名称</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	&quot;settings&quot;:&#123;</span><br><span class="line">		&quot;index&quot;:&#123;</span><br><span class="line">			&quot;number_of_shards&quot;:1,#分片的数量</span><br><span class="line">			&quot;number_of_replicas&quot;:0#副本数量</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文档管理</p>
+<ul>
+<li>对文档进行CRUD操作(通过发送HTTP请求实现)<ul>
+<li>添加文档<ul>
+<li>PUT /{index}/{type}/{id} { “field”: “value”, … } 如果不指定id，ES会自动生成。</li>
+</ul>
+</li>
+<li>查询文档<ul>
+<li>GET /{index}/{type}/{id}</li>
+</ul>
+</li>
+<li>修改文档<ul>
+<li>ES更新文档的顺序是 先检索到文档、将原来的文档标记为删除、创建新文档、删除旧文档，创建新文档就会重建索引</li>
+<li>通过请求Url有两种方法：<ol>
+<li>完全替换 POST：/{index}/{type}/{id} 根据id删除</li>
+<li>局部更新 POST: /{index}/{type}/{id}/_update 搜索匹配删除，将搜索出来的记录删除</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>删除文档<ol>
+<li>DELETE /{index}/{type}/{id} </li>
+<li>POST /{index}/{type}/_delete_by_query</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>映射管理<ul>
+<li>每个document中包含一个或多个field</li>
+<li>对映射进行CRUD操作(通过发送HTTP请求实现)<ul>
+<li>创建映射<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">put http://localhost:9200/索引库名称/类型名称/_mapping</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	&quot;properties&quot;: &#123;</span><br><span class="line">			&quot;name&quot;: &#123;</span><br><span class="line">			&quot;type&quot;: &quot;text&quot;,</span><br><span class="line">			&quot;analyzer&quot;:&quot;ik_max_word&quot;,</span><br><span class="line">			&quot;search_analyzer&quot;:&quot;ik_smart&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;description&quot;: &#123;</span><br><span class="line">			&quot;type&quot;: &quot;text&quot;,</span><br><span class="line">			&quot;analyzer&quot;:&quot;ik_max_word&quot;,</span><br><span class="line">			&quot;search_analyzer&quot;:&quot;ik_smart&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;studymodel&quot;: &#123;</span><br><span class="line">			&quot;type&quot;: &quot;keyword&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;price&quot;: &#123;</span><br><span class="line">			&quot;type&quot;: &quot;float&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;timestamp&quot;: &#123;</span><br><span class="line">			&quot;type&quot;: &quot;date&quot;,</span><br><span class="line">			&quot;format&quot;: &quot;yyyy‐MM‐dd HH:mm:ss||yyyy‐MM‐dd||epoch_millis&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>注意！：</p>
+<ul>
+<li>6.0之前的版本有type（类型）概念，type相当于关系数据库的表，ES官方将在ES9.0版本中彻底删除type。</li>
+<li>创建索引库相当于关系数据库中的数据库还是表？<ul>
+<li>如果相当于数据库就表示一个索引库可以创建很多不同类型的文档，这在ES中也是允许的</li>
+<li>如果相当于表就表示一个索引库只能存储相同类型的文档，ES官方建议 在一个索引库中只存储相同类型的文档</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>映射(field)</p>
+<ul>
+<li>document中除了可以保存字符串类性的field，还能保存数值、日期等类型</li>
+<li>常用映射数据类型<ol>
+<li>字符串：<ul>
+<li>text 会分词</li>
+<li>keyword 不分词，keyword字段为关键字字段，通常按照整体搜索，因此创建keyword字段的索引时是不进行分词的，比如：邮政编码、手机号码、身份证等。keyword字段通常用于过虑、排序、聚合等        </li>
+</ul>
+</li>
+<li>数值<br> byte、short、integer、long、float、double、half_float、scaled_float<br> 与一般的数值基本类型类似<br> <em>(优化) 尽量选择范围小的类型，提高搜索效率
+ </em>(优化) 对于浮点数尽量用比例因子scaled_float()，把浮点变为整型再存储，好处是整型比浮点型更易压缩，节省磁盘空间，没有适合的比例因子时再选择范围最小的<ul>
+<li>half_float &lt; float &lt; double        </li>
+</ul>
+</li>
+<li>日期</li>
+<li>布尔</li>
+<li>二进制</li>
+<li>等级 range（用于范围过虑）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h3><ul>
+<li>什么是分词器？<ul>
+<li>添加文档时会进行分词，索引中存放的就是一个一个的词（term），当搜索时就是用关键字匹配词(term)，最终找到词关联的文档。</li>
+<li>因此对一段内容创建索引，首先就要对该内容进行分词，分词通过分词器实现</li>
+<li>ElasticSearch默认使用的分词器- analyze 是将单个的字作为分词条件，针对中文分词时不适用</li>
+<li>中文分词使用IK作为分词器，需要下载IK，解压后复制到ElasticSearch安装目录的plugins下的ik目录下</li>
+</ul>
+</li>
+<li><p>分词模式：</p>
+<ul>
+<li>ik_max_word：会将文本做最细粒度的拆分，比如会将“中华人民共和国人民大会堂”拆分为 中华人民共和国、中华人民、中华、华人、人民共和国、人民、共和国、大会堂、大会、会堂等</li>
+<li><p>ik_smart：会做最粗粒度的拆分，比如会将“中华人民共和国人民大会堂”拆分为 中华人民共和国、人民大会堂</p>
+<p>*(优化) 建议创建索引时使用ik_max_word将搜索内容进行细粒度分词，搜索时使用ik_smart提高搜索精确性</p>
+</li>
+</ul>
+</li>
+<li><p>自定义词库：让分词器支持一些专有词语(扩展默认字典)</p>
+<ul>
+<li>iK分词器自带一个main.dic的文件，此文件为词库文件</li>
+<li>在目录中新建一个my.dic文件，作为扩展词库</li>
+<li>在配置文件中添加扩展词库配置，引入my.dic</li>
+</ul>
+</li>
+</ul>
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><ul>
+<li>过虑是针对搜索的结果进行过虑，过虑器主要判断的是文档是否匹配，不去计算和判断文档的匹配度得分，所以过虑器性能比查询要高，且方便缓存</li>
+<li>(优化) 推荐尽量使用过虑器去实现查询或者过虑器和查询共同使用</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/28/blog8_maven笔记/" class="archive-article-date">
-  	<time datetime="2019-04-28T15:27:55.069Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/28/blog8_maven笔记/">maven笔记</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.iocyho.top/2019/09/05/blog28_ElasticSearch/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/21/blog7_RPC框架原理/" class="archive-article-date">
-  	<time datetime="2019-04-21T14:55:47.738Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/05/blog27_FastDFS/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">FastDFS</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/21/blog7_RPC框架原理/">RPC框架</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/14/blog6_java打包/" class="archive-article-date">
-  	<time datetime="2019-04-14T13:31:41.647Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/14/blog6_java打包/">java打包</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/blog5_设计模式/" class="archive-article-date">
-  	<time datetime="2019-04-07T13:08:38.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/blog5_设计模式/">设计模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/blog4_xml笔记/" class="archive-article-date">
-  	<time datetime="2019-04-07T02:35:37.597Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/blog4_xml笔记/">xml笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/31/blog3_webservice笔记/" class="archive-article-date">
-  	<time datetime="2019-03-30T18:03:02.412Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/31/blog3_webservice笔记/">Web services笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/27/blog2_使用Hexo搭建个人博客/" class="archive-article-date">
-  	<time datetime="2019-03-27T14:32:11.798Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/blog2_使用Hexo搭建个人博客/">通过Hexo搭建个人博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/27/blog1_开端/" class="archive-article-date">
-  	<time datetime="2019-03-26T16:46:18.280Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/blog1_开端/">开端</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/25/hello-world/" class="archive-article-date">
-  	<time datetime="2019-03-25T10:27:03.767Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -438,8 +510,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
