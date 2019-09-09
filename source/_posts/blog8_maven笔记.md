@@ -20,7 +20,7 @@ title: maven笔记
 * Site LifeCycle 生成项目报告，站点、发布站点
  
 ### maven命令
-	* 安装本地jar包到本地maven仓库
+* 安装本地jar包到本地maven仓库
 	```
-	mvn install:install-file-Dfile=jar包路径 -DgroupId=组织机构名称 -DartifactId=应用名称 -Dversion=版本号 -Dpackaging=包格式
+	mvn install:install-file -Dfile=jar包路径 -DgroupId=组织机构名称 -DartifactId=应用名称 -Dversion=版本号 -Dpackaging=包格式
 	```
