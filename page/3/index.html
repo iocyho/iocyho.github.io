@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
@@ -155,6 +155,347 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-blog9_《计算机是样跑起来的》读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/03/blog9_《计算机是样跑起来的》读书笔记/">《计算机是怎样跑起来的》读书笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/03/blog9_《计算机是样跑起来的》读书笔记/" class="archive-article-date">
+  	<time datetime="2019-05-03T11:34:10.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="计算机的三个根本性原则"><a href="#计算机的三个根本性原则" class="headerlink" title="计算机的三个根本性原则"></a>计算机的三个根本性原则</h3><ol>
+<li>计算机是执行输入、运算、输出的机器</li>
+<li>程序是指令和数据的集合</li>
+<li>计算机的处理方式有时与人的思维习惯不同</li>
+</ol>
+<h3 id="计算机的五个基本组件"><a href="#计算机的五个基本组件" class="headerlink" title="计算机的五个基本组件"></a>计算机的五个基本组件</h3><ol>
+<li>运算器：CUP的核心</li>
+<li>控制器：时钟信号发生器,集成在CPU中</li>
+<li>存储设备：内存</li>
+<li>输入设备</li>
+<li>输出设备</li>
+</ol>
+<h3 id="计算机的工作原理"><a href="#计算机的工作原理" class="headerlink" title="计算机的工作原理"></a>计算机的工作原理</h3><ul>
+<li>CUP在时钟信号的控制下，解释、执行存储在内存中的程序，按照程序中的指令把内存或I/O的数据输入到CPU中，在CPU中对数据进行运算，再把运算结果输出到内存或者I/O中</li>
+</ul>
+<h3 id="硬件的电路连接"><a href="#硬件的电路连接" class="headerlink" title="硬件的电路连接"></a>硬件的电路连接</h3><h3 id="机器语言与汇编语言"><a href="#机器语言与汇编语言" class="headerlink" title="机器语言与汇编语言"></a>机器语言与汇编语言</h3><h3 id="程序像河水般流淌"><a href="#程序像河水般流淌" class="headerlink" title="程序像河水般流淌"></a>程序像河水般流淌</h3><ul>
+<li>顺序执行<ul>
+<li>最基本的程序流程，由CPU的硬件功能实现。PC(Program Counter)寄存器中存储了下一个执行指令的内存地址。PC寄存器中存储的内存地址值会随着程序的执行自动更新。</li>
+</ul>
+</li>
+<li>分支与循环<ul>
+<li>在高级语言中使用程序块表示，在机器语言和汇编语言中通过跳转指令表示，在硬件上则是通过将PC寄存器上的值设置为要跳转的目的地的内存地址来实现。</li>
+</ul>
+</li>
+<li>中断处理(Interrupt)<ul>
+<li>由于外部原因使正常的流程中断，中断完后再返回到之前的流程的过程就是中断处理流程。用现实中的例子来对比就是正坐在办公桌前处理文件的时候，突然电话响了，就要放下手头的工作去接电话，接完电话再回头继续之前的工作。</li>
+<li>计算机使程序的流程突然跳转到程序中的指定地方，这样的地方被称为中断处理例程(Routine)或者中断处理程序(Handler)，这种跳转是通过CPU所具备的硬件功能实现的。</li>
+<li>对比中断与监听的区别<ul>
+<li>接电话是中断</li>
+<li>与人在线聊天是监听</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件驱动(Event Driven)<ul>
+<li>用户在应用程序中点击鼠标或者按下键盘等操作称为”事件”(Event)</li>
+<li>由操作系统负责检测事件，操作系统调用程序事先定义好的特定函数通知应用程序事件的发生。</li>
+<li>应用程序接收到操作系统的通知后根据事件类型做出相应的处理。</li>
+<li>这样的机制就是事件驱动，本质上就是一种特殊的条件分支，以操作系统的通知为判断条件，根据通知内容决定程序的下一步流程。是一种适用于GUI的编程风格(<font size="5">人机交互就是典型的事件驱动</font>)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><ul>
+<li>算法就是结合计算机的特性，用程序来表现现实世界中对问题的处理步骤。有表示程序整体大流程的算法，也有表示程序局部小流程的算法。</li>
+<li>算法要点<ol>
+<li>算法中解决问题的步骤是明确且有限的</li>
+<li>计算机不依靠直觉，而是机械地解决问题<ul>
+<li>步骤明确，不依赖直觉</li>
+<li>步骤机械，不需要思考</li>
+<li>使步骤终止的原因明确</li>
+</ul>
+</li>
+<li>了解并应用典型算法</li>
+<li>利用好计算机的处理速度<ul>
+<li>人无法遍历穷举，但是计算机可以</li>
+<li>计算机的直觉就是遍历</li>
+<li>算法优化就是提前排除不可能的答案，减少遍历次数</li>
+</ul>
+</li>
+<li>找出数字间的规律<ul>
+<li>对计算机而言，所有的信息都是数字，构造算法的核心就是找出数字间的规律</li>
+</ul>
+</li>
+<li>先在纸上考虑算法</li>
+</ol>
+</li>
+</ul>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><ul>
+<li>结合计算机的特性，用程序来表现现实世界中的数据结构</li>
+<li>数据结构要点：<ol>
+<li>变量与内存的关系<ul>
+<li>变量是数据的容器</li>
+<li>计算机所处理的数据都被存储在内存的IC(Integrated Circuit，集成电路)中。一般的计算机中，内存内部被分割成了若干个存储数据的单元，每个单元可以存储8bit的数据(8bit = 1Byte)。为了区分各个单元，每个单元都被分配了一个编号，这个编号即是”<strong>内存地址</strong>“</li>
+<li>硬件上是通过指定内存地址找到对应的内存区域，从而获取里面存储的数据，进行处理。因为<strong>依靠指定内存的方式编写程序很麻烦</strong>,所以高级编程语言都是<strong>使用变量把数据存储进内存，或者从内存中把数据读出来</strong></li>
+<li><font size="4"><strong>变量是程序中数据存储的最小单位，每一个变量都对应着一块物理上的内存空间</strong></font></li>
+</ul>
+</li>
+<li>数组是数据结构的基础<ul>
+<li>内存中存储数据的空间就是连续分布的，数组反映了内存的物理机构本身。</li>
+<li>数组是为了存储多个数据而在内存上集中划分出来的一段连续的存储空间，并为这段空间整体赋予了一个名字</li>
+<li>只有连续才能使用索引，索引表示的是相对起始内存空间的偏移量</li>
+</ul>
+</li>
+<li>典型数据结构<ul>
+<li>数组直接利用了内存的物理机构，其他数据结构都是从逻辑上改变了内存的物理结构</li>
+<li>栈 Last In First Out<ul>
+<li>需要定义一个数组和一个变量，数组所包含的元素个数，就是栈的大小。变量中存储一个索引，指向存储在栈中最顶端(的空位置，可以存储数据)，这个变量被称为”栈顶指针”。添加数据时，栈顶指针指向新增的数据，同时更新栈中所存储数据的总数。删除变量时，栈顶指针指向被删除数据的下一个数据，更新栈中所存储数据的总数。</li>
+</ul>
+</li>
+<li>队列 First In First Out<ul>
+<li>需要定义一个数组、一个存储头部数据对应索引的变量，一个存储尾部数据对应索引的变量。逻辑上就是一个首尾相连的数组</li>
+</ul>
+</li>
+<li>链表</li>
+<li>树</li>
+<li>图</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><ul>
+<li>面向对象通过把组件拼装到一起构建程序。类(Class)就是程序的组件(Component)。汇集到类中的函数和变量统称为类的”成员”</li>
+<li>面向对象就是顺应人的常规思维习惯(大件的物品都是由许多小的组件组装起来的)，对现实世界建模，目的是提升程序的开发效率和可维护性，适用于大型程序的开发</li>
+<li>面向对象与面向过程<ul>
+<li>非面向对象的编程，可以使用流程图表示程序的运行过程。<strong>流程图是表示处理过程的流程</strong>，因此把非面向对象称为”面向过程”</li>
+<li>面向对象编程，通过对象间的消息传递来驱动程序，使用UML中的”时序图”和”协作图”表示程序的运行过程。</li>
+</ul>
+</li>
+<li>面向对象的基本特征<ul>
+<li>继承：复制已有的类，在复制的类中添加新的成员，生成新的类</li>
+<li>封装：隐藏类中没有必要展现给调用者的成员</li>
+<li>多态：针对同一种消息，不同的对象可以进行不同的操作</li>
+</ul>
+</li>
+<li>类与对象<ul>
+<li>类是对象的定义，对象是类的实例(Instance)</li>
+</ul>
+</li>
+<li>类的三种使用方法<ul>
+<li><strong>调用</strong>类所持有的成员</li>
+<li>在类的定义中包含其他类(<strong>组合</strong>)</li>
+<li>通过<strong>继承</strong>已存在的类，定义出新的类</li>
+</ul>
+</li>
+<li>Java与.Net<ul>
+<li>这两个都是位于操作系统之上，通过隐藏操作系统的复杂性从而提示开发效率的程序集，这样的程序集被称为<font size="5"><strong>框架</strong></font>(Framework)。框架由两部分构成，一部分是负责执行程序的”<strong>执行引擎</strong>“，另一部分是作为程序组件集合的”<strong>类库</strong>“。</li>
+<li><strong>Java框架</strong>支持Java、Kotlin、Android等编程语言</li>
+<li><strong>.Net框架</strong>支持C#、Visual Basic.Net、Visual C++等编程语言</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
+<li>数据库(Database)就是数据(Data)的基地(Base)</li>
+<li>数据文件、DBMS、应用程序<ul>
+<li>数据库的实质是某种数据文件。</li>
+<li>数据库应用程序时为了便于操作数据文件而编程的程序。</li>
+<li>为了提高效率，数据库应用程序操作数据库时是一般使用现有DBMS(数据库管理系统)去间接操作数据文件。</li>
+<li>数据文件、DBMS、应用程序三者构成了<strong>数据库系统三要素</strong>。</li>
+<li><strong>小型系统</strong>中，把三要素全部部署到一台计算机上，就形成”<strong>独立型系统</strong>“</li>
+<li><strong>中型系统</strong>中，把数据文件部署在一台计算机上，使数据文件被部署了DBMS和应用程序的多台计算机共享，就形成”<strong>文件共享型系统</strong>“</li>
+<li><strong>大型系统</strong>中，把数据文件和DBMS部署在一台(或多台)计算机上，用户从另外一些部署着应用程序的计算机去访问，这样的系统被称为”<strong>客户端/服务器型系统</strong>“。</li>
+<li>把部署着数据文件和DBMS的服务器(Server)与部署着应用程序的客户端(Client)用互联网连接起来，就形成了”<strong>Web系统</strong>“</li>
+</ul>
+</li>
+<li>数据库设计<ul>
+<li>业务决定需要哪些的数据(确定字段）</li>
+<li>确定数据的属性(字段类型、长度、默认值…)</li>
+<li>拆表和整理数据实现规范化</li>
+<li>使用主键和外键建立表与表的关系<ul>
+<li>键(Key)是表中反映表关系的字段</li>
+<li>主键(Primary Key)能够唯一地标识表中的某条记录</li>
+<li>外键(Foreign Key)是为了建立表与表之间的关系，而在表中添加的<strong>其他表的主键</strong></li>
+</ul>
+</li>
+<li>当表与表之间出现”多对多”关系时，一般会在两张表间加入一张<strong>连接表</strong>(Link Table)，把多对多关系拆解成两个一对多关系</li>
+</ul>
+</li>
+<li>检索数据<ul>
+<li>索引(Index)是一提升数据检索效率的机制。(对应书本的目录)</li>
+<li>为字段建立索引后，DBMS就会创建一张索引表，存储着字段的值以及字段所对应记录的位置。</li>
+<li>由于索引表中的数字段更少，因此可以更快速地对数据进行排序和检索。</li>
+<li>查询数据时，DBMS先在索引表中进行数据的检索和排序，再根据索引表中记录的位置信息从主表中查询完整的记录。</li>
+<li>使用索引后需要同时维护主表与索引表，会降低新增或修改数据的效率。因此只有那些需要频繁地进行检索和排序的字段，才需要设置索引。</li>
+</ul>
+</li>
+<li>SQL<ul>
+<li>应用程序使用SQL(Structural Query Language)向BDMS发送指令，对数据库进行CRUD(CREATE、REFER、UPDATE、DELETE)操作。</li>
+</ul>
+</li>
+<li>事务控制</li>
+</ul>
+<h3 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h3><ul>
+<li>LAN(Local Area Network)局域网构成<ul>
+<li>计算机上的网卡(Network Interface Card)</li>
+<li>插在网卡上的网线</li>
+<li>把网线汇集起来的集线器(Hub),联通局域网内部的各台计算机</li>
+<li>负责将局域网连接到互联网的路由器(Router)</li>
+</ul>
+</li>
+<li>IP<ul>
+<li>IP地址的作用是对计算机进行分组管理，便于网络通信时迅速找到目的地</li>
+<li>设定了IP地址的计算机被称为”主机”(Host)</li>
+<li>IP地址由表示分组(即LAN)的网络地址和，和表示各台计算机(Host)的主机地址构成</li>
+<li>子网掩码用于标识IP中哪部分是网络地址。子网掩码的格式是(255.255.255.xx)，将所有数字用二进制表示，值为1的部分对应网络地址，值为0的部分对应主机地址</li>
+</ul>
+</li>
+<li>DHCP(Dynamic Host Configuration Protocal)动态主机设置协议<ul>
+<li>记录着可以被分配到LAN内计算机的IP地址范围和子网掩码的值</li>
+<li>自动给LAN内的计算机分配可用的IP</li>
+</ul>
+</li>
+<li>路由器<ul>
+<li>IP地址中的网络地址部分可以代表一个组(LAN)中的全部计算机。互联网就是用路由器把多个LAN连接起来的一张大网</li>
+<li>路由器是LAN通往互联网的入口(Gateway)，设置IP地址时，”默认网关”通常就是路由器的IP</li>
+<li>路由器中记录了一张路由表，工作原理就是查看被附加到数据上的IP地址中的网络地址部分，只要数据不是发给LAN内计算机的，就发送到互联网。</li>
+<li>route print 命令可以查看路由表</li>
+<li>tracert “要访问的计算机IP或域名” 可以跟踪路由转发过程</li>
+</ul>
+</li>
+<li>DNS(Domain Name System)域名系统<ul>
+<li>由于IP地址难以记忆，因此通常使用更容易记忆的域名去访问服务，DNS的作用就是将域名解析为IP地址</li>
+<li>命令行状态下，输入 nslookup 指令可操作DNS服务器。再输入要解析的域名，就可以看到解析后的IP地址</li>
+</ul>
+</li>
+<li>ARP(Adress Resolution Protocol)地址解析协议<ul>
+<li>将IP与于MAC地址建立映射，实现IP地址到MAC地址的转换</li>
+</ul>
+</li>
+<li><p>TCP(Transmission Control Protocol)传输控制协议</p>
+<ul>
+<li>IP协议用于指定数据发送的目的地，并通过路由器转发数据</li>
+<li>TCP协议用于与目的地建立连接，可靠地进行通信</li>
+</ul>
+</li>
+<li><p>数据加密</p>
+<ul>
+<li>加密的基本手段<ul>
+<li>对编码进行变换，即将构数据的编码变换为其他数值。反转这种变换过程，加密后的数据就可以还原。</li>
+</ul>
+</li>
+<li>对称加密<ul>
+<li>加密和解密的过程中使用相同的密钥</li>
+</ul>
+</li>
+<li>非对称加密<ul>
+<li>密钥分为公钥和私钥，公钥用于加密，私钥用于解密</li>
+<li>RAS算法</li>
+</ul>
+</li>
+<li>数字签名<ul>
+<li>确保数据的完整性，传输过程中没有被篡改</li>
+<li>对全文数据按一定的算法计算出”信息摘要”</li>
+<li>发送者使用私钥对信息摘要进行加密,得到信息摘要密文,发送</li>
+<li>接收者使用公钥对信息摘要密文进行解密,得到信息摘要</li>
+<li>接收者按同样的方法对全文数据进行计算。</li>
+<li>将自己计算出的”信息摘要”与发送者发过来的”信息摘要”进行比对，二者一致就证明文件没有被篡改过</li>
+</ul>
+</li>
+<li>合理的密钥应该具备的条件<ul>
+<li>长短适中</li>
+<li>可以反复使用</li>
+<li>可以通过某种通信手段交给接收者</li>
+<li>通信双方以外的人难以用它来解密</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><ul>
+<li>通过添加<strong>标签为数据赋予意义</strong>的行为称为”标记”</li>
+<li>给赋予数据意义的行为定义规则的语言，就是”标记语言”。可使用的标签种类决定了标记语言的规范。</li>
+<li>XML是Extensible Markup Language的缩写，即可扩展标记语言</li>
+<li>XML是元语言<ul>
+<li>XML仅仅限定了进行标记时标签的书写格式(书写风格)，并没有限定标签的使用方式。可以通过自定义标签种类创造出一门新的标记语言，这种用于创造语言的语言被称作”元语言”。</li>
+</ul>
+</li>
+<li>XML的作用<ul>
+<li>为信息赋予意义</li>
+<li>通用的数据交换格式</li>
+</ul>
+</li>
+<li>XML命名空间<ul>
+<li>同样名称的标签，不同的人有不同的解读，为了比避免同形异义词带来的混乱，诞生了命名空间，用于修饰限定标签名字以及标签所代表的含义。</li>
+<li>通过把”xmlns = 命名空间的名字 “作为标签的属性，就可以为标签设定命名空间。通常使用全世界唯一的标识符作为命名空间名称。互联网中，<strong>公司的URI就是最直观的唯一标识</strong>，因此目前看到的xmlns后面都是各种url地址。</li>
+</ul>
+</li>
+<li>XML文档结构<ul>
+<li>完整的XML文档包括XML声明、XML实例和XML文档类型描述(Document Type Definition,缩写为DTD)。</li>
+<li>DTD的作用是定XML的实例结构，XML实例内容进行严格约束(标签名称等)</li>
+<li>更加复杂的文档结构约束技术是 XML Schema(比DTD更加细化，可以对数据类型、数字位数等进行约束)</li>
+</ul>
+</li>
+<li>解析XML的规范<ul>
+<li>DOM(Document Object Model) 将整个xml以DOM树的形式加载进内存</li>
+<li>SAX(Simple API for XML) 逐行读取xml</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/03/blog9_《计算机是样跑起来的》读书笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-blog8_maven笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -185,9 +526,11 @@
 <li>Default LifeCycle 构建的核心部分，编译、测试、打包、部署等<br>  1 validate - 验证项目是否正确，所有必要的信息均可用<br>  2 <strong>compile</strong> - 编译项目的源代码<br>  3 test - 使用适合的单元测试框架测试编译的源代码(这些测试不应该要求代码被打包或部署)<br>  4 <strong>package</strong> - 对编译后的代码以指定的格式(如war或jar)进行打包<br>  5 verify - 对集成测试的结果执行检查，确保满足质量标准<br>  6 <strong>install</strong> - 将软件包安装到本地仓库中，作为本地其他项目的依赖<br>  7 deploy - 发布，在构建环境中完成，将最终的包复制到远程仓库与其他开发人员或项目共享</li>
 <li>Site LifeCycle 生成项目报告，站点、发布站点</li>
 </ul>
-<h3 id="maven命令"><a href="#maven命令" class="headerlink" title="maven命令"></a>maven命令</h3><pre><code>* 安装本地jar包到本地maven仓库
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install:install-file-Dfile=jar包路径 -DgroupId=组织机构名称 -DartifactId=应用名称 -Dversion=版本号 -Dpackaging=包格式</span><br></pre></td></tr></table></figure>
-</code></pre>
+<h3 id="maven命令"><a href="#maven命令" class="headerlink" title="maven命令"></a>maven命令</h3><ul>
+<li>安装本地jar包到本地maven仓库  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install:install-file -Dfile=jar包路径 -DgroupId=组织机构名称 -DartifactId=应用名称 -Dversion=版本号 -Dpackaging=包格式</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
 
       
@@ -1727,7 +2070,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
@@ -154,6 +154,122 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-blog30_spring笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/15/blog30_spring笔记/">spring笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/15/blog30_spring笔记/" class="archive-article-date">
+  	<time datetime="2019-09-15T12:41:52.440Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="循环依赖"><a href="#循环依赖" class="headerlink" title="循环依赖"></a>循环依赖</h3><ul>
+<li>spring容器如何解决循环依赖<ul>
+<li>通过单例缓存池解决循环依赖(三级缓存池)<ul>
+<li>org.springframework.context.support.AbstarctApplicationContext # getBean()</li>
+<li>org.springframework.bean.factory.support.AbstarctBeanFactory # doGetBean()<ol>
+<li>transformeBeanName 解析别名</li>
+<li>getSingleton 尝试去缓存池中获取对象(第一次创建bean时，缓存池中没有该对象)</li>
+<li>若出现循环依赖，判断bean是否单例，不是单例则抛出异常</li>
+<li>当前容器是否有父工厂，有父工厂则尝试由父工厂加载</li>
+<li>合并bean定义</li>
+<li>判断bean定义是否为抽象的</li>
+<li>进行dependsOn依赖检测</li>
+<li>调用getSingleton方法<ul>
+<li>beforeSingletonCreation 标志当前的bean正在被创建</li>
+</ul>
+</li>
+<li>CeateBean 创建bean<ul>
+<li>resolveBeforeInstantation 在aop过程中寻找切面(Aspectj)</li>
+<li>doCreateBean 真正调用创建bean的方法</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>org.springframework.bean.factory.support.AbstarctAutowireCapableBeanFactory # doCreateBean()<ol>
+<li>createBeanInstance() 调用构造器，创建 “早期对象”（属性未赋值）</li>
+<li>提前暴露早期对象，存入缓存池</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>假如InsatcneA与InstanceB互相依赖<ul>
+<li>创建A时先将A的早期对象存入缓存池</li>
+<li>发现A依赖B,则走创建B的流程，将B的早期对象存入缓存池</li>
+<li>发现B又依赖A,则再次走创建A的流程，直接从缓存池中获取A对象，完成B的创建</li>
+<li>进而完成A的创建</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>什么样的循环依赖无法解决<ul>
+<li>在构造器中依赖</li>
+<li>这种情况下创建实例A时，还未来得及将A的早期对象放入单例缓存池就调用了创建实例B的方法</li>
+</ul>
+</li>
+<li>为什么多例模式无法解决循环依赖<ul>
+<li>因为多例模式下，对象不会被存入单例缓存池，因此无法从单例缓存池获取对象</li>
+</ul>
+</li>
+</ul>
+<h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><ul>
+<li>为什么通过IOC容器获取到的组件是一个动态代理对象？</li>
+<li>什么时候生成的代理对象？</li>
+<li>代理对象存放在哪？</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/15/blog30_spring笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-blog28_ElasticSearch" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -2022,156 +2138,6 @@
 
 
   
-    <article id="post-blog19_RabbitMQ" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/07/blog19_RabbitMQ/">RabbitMQ</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/07/blog19_RabbitMQ/" class="archive-article-date">
-  	<time datetime="2019-07-07T13:41:26.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="AMQP与JMS"><a href="#AMQP与JMS" class="headerlink" title="AMQP与JMS"></a>AMQP与JMS</h4><ul>
-<li>AMQP Advanced Message Queuing Protocol ,是一套公开的消息队列协议，从协议层定义消息通信数据的标准格式，目的是解决MQ市场上消息协议不统一的问题</li>
-<li>JMS Java Message Service 是一套消息服务的API标准，为所有的java应用程序提供统一的消息通信规范，类似于jdbc，只要遵循jms规范的java应用程序都可以进行通信。</li>
-<li>JMS是在API层面定义标准，专属于java的；AMQP是在协议层定义标准的，可以跨语言。</li>
-</ul>
-<h4 id="RabbitMQ工作原理"><a href="#RabbitMQ工作原理" class="headerlink" title="RabbitMQ工作原理"></a>RabbitMQ工作原理</h4><ul>
-<li><img src="https://s2.ax1x.com/2019/07/07/ZDeLB8.png" alt="RabbitMQ工作原理"></li>
-<li>组成部分<ul>
-<li>Broker：消息队列服务进程，此进程包括两个部分：Exchange和Queue</li>
-<li>Exchange：消息队列交换机，按一定的规则将消息路由转发到某个队列，对消息进行过滤</li>
-<li>Queue：消息队列，存储消息的队列，消息到达队列并转发给指定的消费方</li>
-<li>Producer：消息生产者，即生产方客户端，生产方客户端将消息发送到MQ</li>
-<li>Consumer：消息消费者，即消费方客户端，接收MQ转发的消息</li>
-</ul>
-</li>
-<li>发布消息流程<ul>
-<li>生产者和Broker建立TCP连接</li>
-<li>生产者和Broker建立通道</li>
-<li>生产者通过通道消息发送给Broker，由Exchange将消息进行转发</li>
-<li>Exchange将消息转发到指定的Queue（队列）</li>
-</ul>
-</li>
-<li>接收消息流程<ul>
-<li>消费者和Broker建立TCP连接</li>
-<li>消费者和Broker建立通道</li>
-<li>消费者监听指定的Queue（队列）</li>
-<li>当有消息到达Queue时Broker默认将消息推送给消费者</li>
-<li>消费者接收到消息</li>
-</ul>
-</li>
-</ul>
-<h4 id="RabbitMQ工作模式"><a href="#RabbitMQ工作模式" class="headerlink" title="RabbitMQ工作模式"></a>RabbitMQ工作模式</h4><ol>
-<li>工作队列模式<ul>
-<li>多个消费者监听同一个队列，但一条消息不会被多个消费者消费，而是采用轮询的方式依次发给不同的消费者</li>
-</ul>
-</li>
-<li>发布订阅模式<ul>
-<li>一个生产者将消息发送给交换机</li>
-<li>交换机绑定多个队列，每个消费者监听自己的队列</li>
-<li>生产者将消息发送给交换机，交换机将消息转发到绑定此消息的每个队列，每个与此交换机绑定的队列都会收到消息</li>
-</ul>
-</li>
-<li>路由模式<ul>
-<li>每个消费者监听自己的队列，并设置routingkey</li>
-<li>生产者将消息发送给交换机，交换机根据routingkey来将消息发送给指定队列（队列的routingkey与生产者发送消息时指定的routingkey相等）</li>
-</ul>
-</li>
-<li>topic模式<ul>
-<li>每个消费者监听自己的队列，并设置带通配符的routingkey</li>
-<li>单词间以”.”分隔,符号*可以匹配一个词，符号#可以匹配多个词</li>
-<li>生产者将消息发送给交换机，交换机跟据routingkey来将消息发送给指定队列（队列的routingkey与生产者发送消息时指定的routingkey匹配）</li>
-</ul>
-</li>
-<li>header模式<ul>
-<li>不设置路由模式的routingkey，而是设置key/value形式的header来进行队列匹配（routingkey是一个值，header是一个map，貌似没有太大的区别）</li>
-</ul>
-</li>
-<li>rpc模式<ul>
-<li>使用MQ来实现的客户端远程调用服务端方法，基于Direct交换机实现（一个解决高并发问题的方案，让并发请求排队）</li>
-<li>客户端发送请求给MQ，MQ转发请求给服务端，服务接收请求后执行方法，方法执行完毕后发消息给MQ，MQ转发执行结果给客户端。</li>
-</ul>
-</li>
-</ol>
-<h4 id="RabbitMQ安装"><a href="#RabbitMQ安装" class="headerlink" title="RabbitMQ安装"></a>RabbitMQ安装</h4><ul>
-<li>安装RabbitMQ对应版本的Erlang运行环境</li>
-<li>安装RabbitMQ，启动RabbitMQ服务</li>
-<li>创建java工程,引入RabbitMQ的java客户端依赖</li>
-<li>注意事项：<ul>
-<li>计算机用户名不能为中文字符，否则RabbitMQ服务会无法启动。如果Rabbit已经在用户名为中午的情况下安装了RabbitMQ,即使把用户名改为英文，用户文件夹还是中文改不过来了。</li>
-<li>解决方法：<ul>
-<li>管理员运行cmd，打开RabbitMQ安装目录</li>
-<li>输入以下命令，路径可以设置成为自定义路径</li>
-<li>rabbitmq-service.bat remove (移除服务)</li>
-<li>set RABBITMQ_BASE=D:\install3\rabbitmq\rabbitmq_server-3.7.8\data (更改RabbitMQ默认日志和数据都存储路径)</li>
-<li>rabbitmq-service.bat install (重新安装服务)</li>
-<li>rabbitmq-plugins enable rabbitmq_management (激活插件管理)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="RabbitMQ使用"><a href="#RabbitMQ使用" class="headerlink" title="RabbitMQ使用"></a>RabbitMQ使用</h4><ul>
-<li>与SpringBoot整合<ul>
-<li>引入AMQP依赖</li>
-<li>定义配置类，将交换机bean加载进spring容器</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/07/blog19_RabbitMQ/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -2265,7 +2231,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:
